@@ -1526,6 +1526,15 @@
             <label>연락처</label>
             <input type="tel" id="fphone" placeholder="010-0000-0000">
         </div>
+
+        <div class="form-row">
+            <label>병원명</label>
+            <input type="text" id="fhospital" placeholder="정확한 병원명을 입력해 주세요">
+        </div>
+        <div class="form-row">
+            <label>병원 주소</label>
+            <input type="text" id="faddress" placeholder="시/군/구 단위까지만 입력해 주셔도 됩니다 (예: 서울시 강남구)">
+        </div>
         <div class="form-row">
             <label>진료과목</label>
             <select id="fdept">
@@ -1642,20 +1651,23 @@
     }
 
     // 신청 폼 제출 함수
+    // 신청 폼 제출 함수
     function submitForm() {
         const name     = document.getElementById('fname').value.trim();
         const phone    = document.getElementById('fphone').value.trim();
+        const hospital = document.getElementById('fhospital').value.trim(); // 새로 추가됨
+        const address  = document.getElementById('faddress').value.trim();  // 새로 추가됨
         const dept     = document.getElementById('fdept').value;
         const revenue  = document.getElementById('frev').value;
         const interest = document.getElementById('finterest').value;
 
-        // 1. 유효성 검사
-        if (!name || !phone || !dept || !revenue || !interest) {
+        // 1. 유효성 검사 (하나라도 비어있으면 경고)
+        if (!name || !phone || !hospital || !address || !dept || !revenue || !interest) {
             alert('모든 항목을 입력해 주세요.');
             return;
         }
 
-        // 2. 버튼 중복 클릭 방지
+        // 2. 버튼 중복 클릭 방지 (여러 번 제출되는 것 방지)
         const btn = document.querySelector('.btn-submit');
         if (btn) {
             btn.disabled = true;
@@ -1665,7 +1677,7 @@
         // 3. 구글 앱스 스크립트 URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx8JPtLlW5XI-OVdRZDt2tsBuD-kefttk33ICTiIl5H7a6l5J6st9QHgI8Lgq0dS8Ht3Q/exec';
 
-        // 4. 데이터 전송
+        // 4. 데이터 전송 (새로운 항목 포함)
         fetch(scriptURL, {
             method: 'POST',
             mode: 'no-cors',
@@ -1673,12 +1685,15 @@
             body: new URLSearchParams({
                 name: name,
                 phone: phone,
+                hospital: hospital, // 구글 시트로 보낼 병원명 데이터
+                address: address,   // 구글 시트로 보낼 주소 데이터
                 dept: dept,
                 revenue: revenue,
                 interest: interest
             })
         })
         .then(() => {
+            // 전송 성공 시 success.html 페이지로 이동
             window.location.href = 'success.html';
         })
         .catch(error => {
