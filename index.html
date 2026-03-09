@@ -1642,37 +1642,56 @@
     }
 
     // ── FORM SUBMIT ──────────────────────────────────
-    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE'; // ← 배포 후 URL 교체
-
+    
+     // 신청 폼 제출 함수 수정본
     function submitForm() {
-        const n = document.getElementById('fname').value.trim();
-        const p = document.getElementById('fphone').value.trim();
-        const d = document.getElementById('fdept').value;
-        const r = document.getElementById('frev').value;
-        const i = document.getElementById('finterest').value;
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const dept = document.getElementById('dept').value;
+    const revenue = document.getElementById('revenue').value;
+    const interest = document.getElementById('interest').value;
 
-        if (!n || !p || !d || !r) {
-            alert('모든 항목을 입력해 주세요.');
-            return;
-        }
-
-        const btn = document.querySelector('.btn-submit');
-        btn.disabled = true;
-        btn.textContent = '신청 중...';
-
-        fetch(APPS_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                source: '랜딩페이지2',
-                name: n, phone: p, dept: d, revenue: r, interest: i
-            })
-        })
-        .then(() => { window.location.href = 'success.html'; })
-        .catch(() => { window.location.href = 'success.html'; });
+    // 1. 모든 항목이 입력되었는지 확인 (유효성 검사)
+    if (!name || !phone || !dept || !revenue || !interest) {
+        alert('모든 항목을 입력해 주세요.');
+        return;
     }
 
+    // 버튼을 '전송 중' 상태로 변경하여 중복 클릭 방지
+    const btn = document.querySelector('.btn-submit');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerText = "데이터 전송 중...";
+    }
+
+    // 2. 구글 앱스 스크립트 '우체통 주소' 설정
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx8JPtLlW5XI-OVdRZDt2tsBuD-kefttk33ICTiIl5H7a6l5J6st9QHgI8Lgq0dS8Ht3Q/exec';
+    
+    // 3. 데이터 전송 (Fetch 방식)
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // 보안 정책상 no-cors 사용
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+            "name": name,
+            "phone": phone,
+            "dept": dept,
+            "revenue": revenue,
+            "interest": interest
+        })
+    })
+    .then(() => {
+        // 4. 전송 성공 시 성공 페이지로 이동
+        window.location.href = "success.html";
+    })
+    .catch(error => {
+        alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
+        if (btn) {
+            btn.disabled = false;
+            btn.innerText = "무료 경영 진단 신청하기 →";
+        }
+    });
+}
     // REMAIN
     let remain = 3;
     setInterval(() => {
