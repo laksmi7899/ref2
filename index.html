@@ -1663,59 +1663,60 @@
     }
 
     // 신청 폼 제출 함수
-    // 신청 폼 제출 함수
-    function submitForm() {
-        const name     = document.getElementById('fname').value.trim();
-        const phone    = document.getElementById('fphone').value.trim();
-        const hospital = document.getElementById('fhospital').value.trim(); // 새로 추가됨
-        const address  = document.getElementById('faddress').value.trim();  // 새로 추가됨
-        const dept     = document.getElementById('fdept').value;
-        const revenue  = document.getElementById('frev').value;
-        const interest = document.getElementById('finterest').value;
+function submitForm() {
+    // [검증] HTML의 id를 통해 값을 정확히 가져옵니다.
+    const nameVal     = document.getElementById('fname').value.trim();
+    const phoneVal    = document.getElementById('fphone').value.trim();
+    const hospitalVal = document.getElementById('fhospital').value.trim();
+    const addressVal  = document.getElementById('faddress').value.trim();
+    const deptVal     = document.getElementById('fdept').value;
+    const revenueVal  = document.getElementById('revenue').value;  // HTML id="revenue"
+    const interestVal = document.getElementById('interest').value; // HTML id="interest"
 
-        // 1. 유효성 검사 (하나라도 비어있으면 경고)
-        if (!name || !phone || !hospital || !address || !dept || !revenue || !interest) {
-            alert('모든 항목을 입력해 주세요.');
-            return;
-        }
-
-        // 2. 버튼 중복 클릭 방지 (여러 번 제출되는 것 방지)
-        const btn = document.querySelector('.btn-submit');
-        if (btn) {
-            btn.disabled = true;
-            btn.innerText = '데이터 전송 중...';
-        }
-
-        // 3. 구글 앱스 스크립트 URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwmJn_cQXSyD8JauoYoyntvLpgG1rmWllo6-fngIH38giZZkmqqe7AQsrO_KvUAWwJAEA/exec';
-
-        // 4. 데이터 전송 (새로운 항목 포함)
-        fetch(scriptURL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({
-                name: name,
-                phone: phone,
-                hospital: hospital, // 구글 시트로 보낼 병원명 데이터
-                address: address,   // 구글 시트로 보낼 주소 데이터
-                dept: dept,
-                revenue: revenue,
-                interest: interest
-            })
-        })
-        .then(() => {
-            // 전송 성공 시 success.html 페이지로 이동
-            window.location.href = 'success.html';
-        })
-        .catch(error => {
-            alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
-            if (btn) {
-                btn.disabled = false;
-                btn.innerText = '무료 경영 진단 신청하기 →';
-            }
-        });
+    // 1. 유효성 검사 (빈 값이 있는지 체크)
+    if (!nameVal || !phoneVal || !hospitalVal || !addressVal || !deptVal || !revenueVal || !interestVal) {
+        alert('모든 항목을 입력해 주세요.');
+        return;
     }
+
+    // 2. 버튼 중복 클릭 방지
+    const btn = document.querySelector('.btn-submit');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerText = '데이터 전송 중...';
+    }
+
+    // 3. 구글 앱스 스크립트 URL (본인의 URL인지 다시 확인하세요)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwmJn_cQXSyD8JauoYoyntvLpgG1rmWllo6-fngIH38giZZkmqqe7AQsrO_KvUAWwJAEA/exec';
+
+    // 4. 데이터 전송 (구글 스크립트의 e.parameter 변수명과 일치시켜야 함)
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // 구글 스크립트 보안 정책상 필수 설정
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+            "name": nameVal,
+            "phone": phoneVal,
+            "hospital": hospitalVal,
+            "address": addressVal,
+            "dept": deptVal,
+            "revenue": revenueVal,
+            "interest": interestVal
+        })
+    })
+    .then(() => {
+        // 전송 성공 시 성공 페이지로 이동
+        window.location.href = 'success.html';
+    })
+    .catch(error => {
+        console.error('전송 오류:', error);
+        alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+        if (btn) {
+            btn.disabled = false;
+            btn.innerText = '무료 경영 진단 신청하기 →';
+        }
+    });
+}
 
     // REMAIN
     let remain = 3;
