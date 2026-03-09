@@ -3,1033 +3,757 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USP Company | 병원 경영 통합 솔루션 보고서</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+    <title>신청 완료 | USP COMPANY</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
         :root {
-            --gold: #C5A059;
-            --gold-light: #D4B478;
-            --gold-bg: #FBF7F0;
-            --dark: #1A1A1A;
-            --dark2: #2C2C2C;
-            --text: #1d1d1f;
-            --text-sub: #555;
-            --text-light: #888;
-            --border: #E8E0D0;
-            --border-light: #F0EAE0;
-            --red: #D94040;
-            --green: #2E8B57;
-            --bg: #FAFAF8;
-            --kakao: #FEE500;
+            --bg-white: #ffffff;
+            --bg-light: #f5f5f7;
+            --bg-dark: #0a0a0f;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #b08e4a;
+            --text-main: #1d1d1f;
+            --text-sub: #6e6e73;
+            --border: #e5e5e7;
+            --kakao-yellow: #FEE500;
+            --success-green: #34c759;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; letter-spacing: -0.025em; }
-        body { font-family: 'Pretendard', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-        .page { max-width: 680px; margin: 0 auto; background: #fff; box-shadow: 0 0 60px rgba(0,0,0,0.08); }
-
-        /* ── FLOATING ── */
-        .float-kakao {
-            position: fixed; bottom: 24px; right: 16px; z-index: 999;
-            background: var(--kakao); color: #3C1E1E;
-            border-radius: 50px; padding: 13px 20px;
-            font-size: 13px; font-weight: 800;
-            box-shadow: 0 6px 24px rgba(254,229,0,0.45);
-            cursor: pointer; text-decoration: none;
-            display: flex; align-items: center; gap: 7px;
-            opacity: 0; transform: translateY(16px);
-            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; letter-spacing: -0.03em; margin: 0; padding: 0; }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
         }
-        .float-kakao.show { opacity: 1; transform: translateY(0); }
-
-        /* [추가] 우측 하단 상단 이동 버튼 */
-        .float-top {
-            position: fixed; bottom: 85px; right: 16px; z-index: 998;
-            background: #fff; color: var(--gold);
-            width: 46px; height: 46px; border-radius: 50%;
-            border: 1px solid var(--border);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 900; line-height: 1;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer; text-decoration: none;
-            opacity: 0; visibility: hidden; transform: translateY(10px);
-            transition: all 0.3s ease;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            box-shadow: 0 0 80px rgba(0,0,0,0.06);
+            overflow: hidden;
         }
-        .float-top span { font-size: 16px; margin-bottom: 2px; }
-        .float-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
 
-        /* [추가] 각 섹션 하단 텍스트 버튼 */
-        .section-top-btn {
-            display: block; width: fit-content; margin: 24px 0 0 auto;
-            font-size: 12px; font-weight: 700; color: var(--text-light);
-            text-decoration: none; padding: 8px 12px;
-            border: 1px solid var(--border-light); border-radius: 6px;
-            transition: all 0.2s;
+        /* ——— 상단 성공 헤더 ——— */
+        .success-hero {
+            padding: 70px 30px 55px;
+            text-align: center;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: relative;
         }
-        .section-top-btn:hover { background: var(--gold-bg); color: var(--gold); border-color: var(--gold); }
+        .success-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), #e8c97a, var(--accent-gold));
+        }
+        .check-circle {
+            width: 72px; height: 72px;
+            background: rgba(52,199,89,0.1);
+            border: 2px solid rgba(52,199,89,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 24px;
+        }
+        .success-hero h1 {
+            font-size: 26px; font-weight: 900;
+            color: var(--text-main); margin-bottom: 14px;
+        }
+        .success-hero p {
+            font-size: 15px; color: var(--text-sub);
+            line-height: 1.7; word-break: keep-all;
+        }
+        .success-hero p strong { color: var(--text-main); font-weight: 700; }
 
-        /* ── COVER ── */
-        .cover {
-            background: var(--dark);
-            padding: 64px 40px 56px;
+        /* 진행 타임라인 */
+        .timeline-wrap {
+            padding: 40px 25px;
+            background: var(--bg-light);
+        }
+        .timeline-title {
+            font-size: 13px; font-weight: 700;
+            color: var(--text-sub); text-transform: uppercase;
+            letter-spacing: 0.8px; margin-bottom: 20px;
+        }
+        .timeline {
+            display: flex; flex-direction: column; gap: 0;
+        }
+        .tl-item {
+            display: flex; gap: 16px; position: relative;
+        }
+        .tl-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 17px; top: 36px;
+            width: 2px; height: calc(100% - 10px);
+            background: var(--border);
+        }
+        .tl-dot {
+            width: 36px; height: 36px;
+            border-radius: 50%; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 900;
+            position: relative; z-index: 1;
+        }
+        .tl-dot.active {
+            background: var(--accent-gold); color: #fff;
+            box-shadow: 0 4px 12px rgba(197,160,89,0.3);
+        }
+        .tl-dot.pending {
+            background: var(--bg-white); color: var(--text-sub);
+            border: 2px solid var(--border);
+        }
+        .tl-content {
+            padding: 8px 0 28px;
+        }
+        .tl-content h4 {
+            font-size: 15px; font-weight: 800;
+            color: var(--text-main); margin-bottom: 4px;
+        }
+        .tl-content p {
+            font-size: 13px; color: var(--text-sub); line-height: 1.6;
+        }
+        .tl-content .tl-badge {
+            display: inline-block; margin-top: 6px;
+            padding: 4px 10px;
+            background: rgba(197,160,89,0.1);
+            border-radius: 6px;
+            font-size: 12px; font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        /* ——— 리포트 다운로드 ——— */
+        .download-section {
+            padding: 40px 25px;
+            background: var(--bg-white);
+            border-top: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 11px; font-weight: 700;
+            color: var(--accent-gold); letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 16px;
+            display: block;
+        }
+        .dl-card {
+            background: var(--bg-dark);
+            border-radius: 22px;
+            padding: 30px 25px;
+            display: flex; align-items: center; gap: 18px;
+            text-decoration: none;
+            transition: all 0.25s;
             position: relative; overflow: hidden;
         }
-        .cover::before {
+        .dl-card + .dl-card { margin-top: 12px; }
+        .dl-card::before {
             content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 60px,
-                rgba(197,160,89,0.03) 60px,
-                rgba(197,160,89,0.03) 61px
-            );
+            position: absolute; top: -40px; right: -40px;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, rgba(197,160,89,0.2), transparent 70%);
         }
-        .cover-firm {
-            font-size: 11px; font-weight: 700; letter-spacing: 2px;
-            color: var(--gold); text-transform: uppercase;
-            margin-bottom: 36px; position: relative;
+        .dl-card:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(0,0,0,0.15); }
+        .dl-icon {
+            width: 52px; height: 52px; flex-shrink: 0;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
         }
-        .cover-firm::after {
-            content: '·  경영전략팀';
-            color: rgba(255,255,255,0.3); font-weight: 400; letter-spacing: 0;
+        .dl-text { flex: 1; }
+        .dl-text span {
+            display: block; font-size: 17px; font-weight: 900;
+            color: #fff; margin-bottom: 4px;
         }
-        .cover-title {
-            font-size: 44px; font-weight: 900; color: #fff;
-            line-height: 1.12; margin-bottom: 10px; position: relative;
-            word-break: keep-all;
+        .dl-text small {
+            font-size: 12px; color: rgba(255,255,255,0.5);
         }
-        .cover-title span { color: var(--gold); }
-        .cover-subtitle {
-            font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.5);
-            font-style: italic; margin-bottom: 48px; position: relative;
+        .dl-arrow {
+            color: var(--accent-gold); font-size: 20px; font-weight: 900; flex-shrink: 0;
         }
-        .cover-meta {
-            display: flex; gap: 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 28px; position: relative;
+        .dl-note {
+            font-size: 12px; color: var(--text-sub);
+            text-align: center; margin-top: 14px; line-height: 1.6;
         }
-        .cover-meta-item { flex: 1; padding-right: 24px; }
-        .cover-meta-item:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); margin-right: 24px; }
-        .cm-label { font-size: 10px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 6px; }
-        .cm-val { font-size: 22px; font-weight: 900; color: var(--gold); }
-        .cm-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; line-height: 1.4; }
-        .cover-toc { position: relative; margin-top: 40px; }
-        .cover-toc-title { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 14px; }
-        .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .toc-item {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px 14px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 8px; cursor: pointer;
-            transition: background 0.2s;
+
+        /* ——— 링크 섹션 공통 ——— */
+        .links-section {
+            padding: 35px 25px;
+            border-top: 1px solid var(--border);
+        }
+        .links-section.bg-light { background: var(--bg-light); }
+        .links-section.bg-white { background: var(--bg-white); }
+
+        .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .link-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 18px; padding: 22px 16px;
             text-decoration: none;
-        }
-        .toc-item:hover { background: rgba(197,160,89,0.1); border-color: rgba(197,160,89,0.3); }
-        .toc-num { font-size: 11px; font-weight: 900; color: var(--gold); min-width: 24px; }
-        .toc-text { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.4; word-break: keep-all; }
-
-        /* ── COVER CTA ── */
-        .cover-cta-block {
-            background: transparent;
-            padding: 32px 0 0;
-        }
-        .btn-cover-primary {
-            display: block; width: 100%;
-            padding: 18px 24px; margin-bottom: 12px;
-            background: var(--gold);
-            color: #fff; font-size: 16px; font-weight: 900;
-            border-radius: 14px; text-align: center;
-            text-decoration: none; border: none; cursor: pointer;
-            font-family: 'Pretendard', sans-serif;
-            letter-spacing: -0.02em; line-height: 1.4;
-            box-shadow: 0 6px 24px rgba(197,160,89,0.3);
+            display: flex; flex-direction: column;
+            align-items: center; text-align: center;
             transition: all 0.2s;
         }
-        .btn-cover-primary:hover { background: #b08e4a; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(197,160,89,0.4); }
-        .btn-cover-primary small { display: block; font-size: 12px; font-weight: 600; opacity: 0.88; margin-top: 4px; }
-        .btn-cover-kakao {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            width: 100%; padding: 16px 24px;
-            background: var(--kakao); color: #3C1E1E;
-            font-size: 15px; font-weight: 800;
-            border-radius: 14px; text-decoration: none; border: none; cursor: pointer;
-            font-family: 'Pretendard', sans-serif;
-            letter-spacing: -0.02em;
-            transition: all 0.2s;
+        .link-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
         }
-        .btn-cover-kakao:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,229,0,0.45); }
-        .cover-cta-disclaimer {
-            font-size: 11px; color: rgba(255,255,255,0.4);
-            text-align: center; margin-top: 12px; line-height: 1.6;
+        .link-card-icon-wrap {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px; font-size: 22px;
+        }
+        .link-card .lc-name {
+            font-size: 14px; font-weight: 800; color: var(--text-main); margin-bottom: 3px;
+        }
+        .link-card .lc-sub {
+            font-size: 11px; color: var(--text-sub);
         }
 
-        /* ── TOP BAR (urgency) ── */
-        .top-bar {
-            background: var(--gold-bg);
+        /* 카카오 카드 */
+        .kakao-card {
+            background: var(--kakao-yellow);
+            border: none;
+            border-radius: 18px; padding: 20px 22px;
+            text-decoration: none;
+            display: flex; align-items: center; gap: 16px;
+            transition: all 0.2s; margin-bottom: 10px;
+        }
+        .kakao-card:last-child { margin-bottom: 0; }
+        .kakao-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(254,229,0,0.35); }
+        .kakao-icon-wrap {
+            width: 46px; height: 46px; border-radius: 13px;
+            background: rgba(60,30,30,0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; flex-shrink: 0;
+        }
+        .kakao-card .kc-text { flex: 1; }
+        .kakao-card .kc-name {
+            font-size: 15px; font-weight: 800; color: #3c1e1e; display: block; margin-bottom: 2px;
+        }
+        .kakao-card .kc-sub {
+            font-size: 12px; color: rgba(60,30,30,0.6);
+        }
+        .kakao-card .kc-arrow {
+            font-size: 18px; color: rgba(60,30,30,0.4); flex-shrink: 0;
+        }
+
+        footer {
+            padding: 40px 20px 30px;
+            text-align: center;
+            font-size: 11px; color: #b0b0b8;
+            border-top: 1px solid var(--border);
+            background: var(--bg-white);
+            line-height: 2;
+        }
+        footer a { color: #999; text-decoration: none; }
+        footer a:hover { color: var(--accent-gold); }
+
+        /* ═══════════════════════════════════════
+           개인정보처리방침 모달
+        ═══════════════════════════════════════ */
+        .privacy-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .privacy-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .privacy-modal {
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            background: var(--bg-white);
+            border-radius: 28px 28px 0 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(60px);
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+            box-shadow: 0 -20px 80px rgba(0,0,0,0.2);
+        }
+        .privacy-overlay.active .privacy-modal {
+            transform: translateY(0);
+        }
+        .privacy-modal-header {
+            padding: 24px 28px 20px;
             border-bottom: 1px solid var(--border);
-            padding: 10px 28px;
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            background: var(--bg-white);
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
-        .top-bar-text { font-size: 12px; color: var(--text-sub); }
-        .top-bar-text strong { color: var(--red); font-weight: 800; }
-        .pulse { display: inline-block; width: 6px; height: 6px; background: var(--red); border-radius: 50%; margin-right: 6px; animation: pulse 1.2s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-        .top-bar-cta {
-            font-size: 11px; font-weight: 800; color: var(--gold);
-            border: 1px solid var(--gold); border-radius: 50px;
-            padding: 5px 12px; text-decoration: none; white-space: nowrap;
-            transition: all 0.15s;
+        .privacy-modal-header-left { display: flex; flex-direction: column; gap: 2px; }
+        .privacy-modal-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        .top-bar-cta:hover { background: var(--gold); color: #fff; }
-
-        /* ── STEP SECTION ── */
-        .step-section { border-bottom: 1px solid var(--border-light); }
-        .step-header {
-            background: var(--dark2);
-            padding: 20px 28px 18px;
-            display: flex; align-items: center; gap: 14px;
+        .privacy-modal-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--text-main);
         }
-        .step-badge {
-            background: var(--gold); color: #fff;
-            font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
-            padding: 5px 10px; border-radius: 4px; white-space: nowrap;
+        .privacy-close-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--text-sub);
+            transition: all 0.2s;
             flex-shrink: 0;
         }
-        .step-header-title { font-size: 20px; font-weight: 900; color: #fff; line-height: 1.3; word-break: keep-all; }
-        .step-header-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 3px; font-style: italic; }
-        .step-body { padding: 28px 28px 32px; }
-
-        /* ── TABLES ── */
-        .report-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
-        .report-table thead tr { background: rgba(197,160,89,0.12); }
-        .report-table thead th {
-            padding: 11px 14px; font-size: 12px; font-weight: 800;
-            color: var(--gold); text-align: center;
-            border-bottom: 2px solid var(--gold);
+        .privacy-close-btn:hover {
+            background: rgba(197,160,89,0.12);
+            color: var(--accent-gold);
         }
-        .report-table thead th:first-child { text-align: left; }
-        .report-table tbody tr { border-bottom: 1px solid var(--border-light); transition: background 0.1s; }
-        .report-table tbody tr:hover { background: var(--gold-bg); }
-        .report-table tbody tr.highlight { background: rgba(197,160,89,0.08); font-weight: 700; }
-        .report-table tbody tr.highlight td { color: var(--dark); }
-        .report-table tbody tr.danger td:first-child { color: var(--red); font-weight: 700; }
-        .report-table tbody td { padding: 11px 14px; color: var(--text-sub); text-align: center; }
-        .report-table tbody td:first-child { text-align: left; }
-        .report-table tbody td.val-red { color: var(--red); font-weight: 800; }
-        .report-table tbody td.val-green { color: var(--green); font-weight: 800; }
-        .report-table tbody td.val-gold { color: var(--gold); font-weight: 800; }
-        .report-table tfoot td {
-            padding: 12px 14px; font-size: 12px; font-weight: 800;
-            background: var(--dark); color: var(--gold);
-            text-align: center;
+        .privacy-modal-body {
+            overflow-y: auto;
+            padding: 30px 28px 50px;
+            -webkit-overflow-scrolling: touch;
         }
-        .report-table tfoot td:first-child { text-align: left; color: rgba(255,255,255,0.6); }
-
-        /* ── SECTION LABEL ── */
-        .sec-label {
-            font-size: 10px; font-weight: 800; letter-spacing: 2px;
-            color: var(--gold); text-transform: uppercase;
-            border-left: 3px solid var(--gold); padding-left: 10px;
-            margin-bottom: 14px; margin-top: 28px;
+        .privacy-modal-body::-webkit-scrollbar { width: 4px; }
+        .privacy-modal-body::-webkit-scrollbar-track { background: transparent; }
+        .privacy-modal-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        .privacy-date {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 28px;
+            padding: 10px 16px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: inline-block;
         }
-        .sec-label:first-child { margin-top: 0; }
-
-        /* ── KPI GRID ── */
-        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
-        .kpi-item { padding: 18px 14px; text-align: center; border-right: 1px solid var(--border); }
-        .kpi-item:last-child { border-right: none; }
-        .kpi-item:nth-child(3), .kpi-item:nth-child(4) { border-top: none; }
-        .kpi-val { font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 5px; }
-        .kpi-lbl { font-size: 11px; color: var(--text-light); line-height: 1.4; }
-        .kpi-sub { font-size: 10px; color: var(--text-light); margin-top: 3px; font-style: italic; }
-
-        /* ── COMPARISON BLOCK ── */
-        .compare-block {
-            display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
-            border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-            margin-bottom: 20px;
+        .privacy-section {
+            margin-bottom: 32px;
         }
-        .compare-col { padding: 20px 18px; }
-        .compare-col.before { background: #FFF5F5; }
-        .compare-col.after { background: #F0FFF4; }
-        .compare-arrow {
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 12px; background: var(--gold-bg);
-            font-size: 20px; color: var(--gold); font-weight: 900;
+        .privacy-section-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
-        .cmp-tag { font-size: 10px; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
-        .cmp-tag.bad { color: var(--red); }
-        .cmp-tag.good { color: var(--green); }
-        .cmp-val { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
-        .cmp-val.bad { color: var(--red); }
-        .cmp-val.good { color: var(--green); }
-        .cmp-desc { font-size: 12px; color: var(--text-light); line-height: 1.5; }
-
-        /* ── CHECKLIST ── */
-        .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .check-item {
-            display: flex; align-items: flex-start; gap: 12px;
-            padding: 14px 16px; border-radius: 8px;
-            border: 1px solid var(--border-light);
+        .privacy-section h3 {
+            font-size: 16px;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
         }
-        .check-item.pass { border-color: rgba(46,139,87,0.25); background: rgba(46,139,87,0.04); }
-        .check-item.fail { border-color: rgba(217,64,64,0.25); background: rgba(217,64,64,0.04); }
-        .check-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-        .check-text h5 { font-size: 13px; font-weight: 800; margin-bottom: 3px; }
-        .check-text p { font-size: 12px; color: var(--text-sub); line-height: 1.55; }
-
-        /* ── STEP FLOW ── */
-        .step-flow { display: flex; flex-direction: column; gap: 0; position: relative; }
-        .step-flow::before {
-            content: ''; position: absolute;
-            left: 18px; top: 20px; bottom: 20px; width: 2px;
-            background: linear-gradient(to bottom, var(--gold), rgba(197,160,89,0.1));
+        .privacy-section p {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.9;
+            word-break: keep-all;
+            margin-bottom: 10px;
         }
-        .sf-item { display: flex; gap: 18px; padding-bottom: 24px; position: relative; }
-        .sf-dot {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: var(--dark); border: 2px solid var(--gold);
-            color: var(--gold); font-size: 12px; font-weight: 900;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; z-index: 1;
-        }
-        .sf-content { flex: 1; padding-top: 6px; }
-        .sf-phase { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--gold); margin-bottom: 3px; }
-        .sf-title { font-size: 15px; font-weight: 900; margin-bottom: 5px; }
-        .sf-items { font-size: 12px; color: var(--text-sub); line-height: 1.85; }
-
-        /* ── ALERT BOX ── */
-        .alert-box {
-            border-radius: 8px; padding: 16px 18px; margin-bottom: 16px;
-            display: flex; gap: 12px; align-items: flex-start;
-        }
-        .alert-box.warning { background: rgba(217,64,64,0.06); border: 1px solid rgba(217,64,64,0.2); }
-        .alert-box.info { background: rgba(197,160,89,0.07); border: 1px solid rgba(197,160,89,0.25); }
-        .alert-box.success { background: rgba(46,139,87,0.06); border: 1px solid rgba(46,139,87,0.2); }
-        .ab-icon { font-size: 18px; flex-shrink: 0; }
-        .ab-text { font-size: 13px; line-height: 1.65; }
-        .ab-text strong { font-weight: 800; }
-
-        /* ── CASE QUOTE ── */
-        .case-box {
-            background: var(--dark); border-radius: 10px;
-            padding: 24px 22px; margin-bottom: 20px;
-        }
-        .case-box-label { font-size: 10px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-        .case-box-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 18px; }
-        .cbs-item { text-align: center; }
-        .cbs-val { font-size: 20px; font-weight: 900; color: var(--gold); }
-        .cbs-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; line-height: 1.4; }
-        .case-quote-text {
-            font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75;
-            border-left: 3px solid var(--gold); padding-left: 14px; font-style: italic;
-        }
-        .case-attr { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 10px; }
-
-        /* ── FAQ ── */
-        .faq-list { display: flex; flex-direction: column; gap: 8px; }
-        .faq-item { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-        .faq-q {
-            padding: 15px 18px; cursor: pointer;
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-            transition: background 0.15s;
-        }
-        .faq-q:hover { background: var(--gold-bg); }
-        .faq-q-wrap { display: flex; align-items: center; gap: 10px; }
-        .faq-cat { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; color: var(--gold); background: rgba(197,160,89,0.12); border-radius: 4px; padding: 3px 7px; white-space: nowrap; }
-        .faq-q-text { font-size: 13px; font-weight: 700; color: var(--text); word-break: keep-all; }
-        .faq-icon { font-size: 18px; color: var(--gold); font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
-        .faq-a { display: none; padding: 0 18px 16px; font-size: 13px; color: var(--text-sub); line-height: 1.75; border-top: 1px solid var(--border-light); padding-top: 14px; }
-        .faq-item.open .faq-a { display: block; }
-        .faq-item.open .faq-icon { transform: rotate(45deg); }
-        .faq-item.open .faq-q { background: var(--gold-bg); }
-
-        /* ── FORM ── */
-        .form-section { background: var(--dark); padding: 40px 28px; }
-        .form-section-label { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-        .form-section h2 { font-size: 22px; font-weight: 900; color: #fff; line-height: 1.35; margin-bottom: 8px; word-break: keep-all; }
-        .form-section p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; }
-        .form-row { margin-bottom: 12px; }
-        .form-row label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); display: block; margin-bottom: 6px; }
-        .form-row input, .form-row select {
-            width: 100%; padding: 13px 15px;
-            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 8px; color: #fff; font-size: 14px;
-            font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em;
-        }
-        .form-row input::placeholder { color: rgba(255,255,255,0.25); }
-        .form-row select option { background: #1A1A1A; color: #fff; }
-        .btn-submit {
-            width: 100%; padding: 17px; margin-top: 6px;
-            background: var(--gold); color: #fff;
-            font-size: 15px; font-weight: 900; border-radius: 10px;
-            border: none; cursor: pointer; font-family: 'Pretendard', sans-serif;
-            letter-spacing: -0.02em; transition: all 0.2s;
-        }
-        .btn-submit:hover { background: #b08e4a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(197,160,89,0.3); }
-        .btn-kakao-form {
-            width: 100%; padding: 15px; margin-top: 10px;
-            background: var(--kakao); color: #3C1E1E;
-            font-size: 14px; font-weight: 800; border-radius: 10px;
-            border: none; cursor: pointer; font-family: 'Pretendard', sans-serif;
-            text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .form-guarantee { font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; margin-top: 12px; line-height: 1.6; }
-
-        /* ── LAYER DIAGRAM ── */
-        .layer-flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
-        .layer-item {
+        .privacy-section p:last-child { margin-bottom: 0; }
+        .privacy-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-top: 10px;
+            border-radius: 10px;
+            overflow: hidden;
             border: 1px solid var(--border);
-            border-radius: 10px; padding: 18px 20px;
-            position: relative;
         }
-        .layer-arrow-down {
-            text-align: center; font-size: 18px; color: var(--gold);
-            padding: 6px 0; font-weight: 900; line-height: 1;
+        .privacy-table th {
+            background: var(--bg-light);
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border);
         }
-        .layer-num-badge {
-            display: inline-block; font-size: 10px; font-weight: 900;
-            letter-spacing: 1.5px; color: var(--gold);
-            background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3);
-            border-radius: 4px; padding: 3px 8px; margin-bottom: 8px;
+        .privacy-table td {
+            padding: 10px 14px;
+            color: var(--text-sub);
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+            vertical-align: top;
         }
-        .layer-title { font-size: 15px; font-weight: 900; margin-bottom: 4px; }
-        .layer-role { font-size: 12px; color: var(--text-sub); margin-bottom: 5px; }
-        .layer-effect { font-size: 12px; color: var(--gold); font-weight: 700; }
-
-        /* ── WIN-WIN TABLE ── */
-        .ww-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
-        .ww-table th { padding: 10px 12px; background: var(--dark); color: var(--gold); font-size: 11px; text-align: center; }
-        .ww-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-light); text-align: center; color: var(--text-sub); vertical-align: middle; }
-        .ww-table td:first-child { font-weight: 800; color: var(--text); text-align: left; }
-        .ww-table td.key { color: var(--dark); font-weight: 700; }
-        .ww-table tr:hover td { background: var(--gold-bg); }
-
-        /* ── DIVIDER ── */
-        .divider { height: 1px; background: var(--border-light); margin: 24px 0; }
-        .divider-gold { height: 2px; background: linear-gradient(to right, var(--gold), transparent); margin: 0 0 24px; }
-
-        /* ── INLINE NOTE ── */
-        .note { font-size: 11px; color: var(--text-light); font-style: italic; margin-top: 8px; line-height: 1.6; }
-
-        /* ── FOOTER ── */
-        .report-footer {
-            background: var(--dark2); padding: 28px 28px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.06);
+        .privacy-table tr:last-child td { border-bottom: none; }
+        .privacy-table tr:nth-child(even) td { background: #fafafa; }
+        .privacy-highlight {
+            background: rgba(197,160,89,0.06);
+            border: 1px solid rgba(197,160,89,0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
         }
-        .rf-brand { font-size: 13px; font-weight: 900; color: var(--gold); }
-        .rf-info { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.7; text-align: right; }
-
-        /* ── PAGE INDICATOR ── */
-        .page-ind {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 8px 28px;
-            background: var(--gold-bg); border-bottom: 1px solid var(--border);
-            font-size: 11px; color: var(--text-light);
+        .privacy-highlight p {
+            color: #5a4020 !important;
+            font-weight: 600;
+            margin-bottom: 0 !important;
         }
-        .page-ind strong { color: var(--gold); }
-
-        /* ── BADGE STRIP ── */
-        .badge-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .badge {
-            font-size: 12px; font-weight: 700;
-            border-radius: 6px; padding: 6px 12px;
+        .privacy-contact-box {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 12px;
         }
-        .badge.green { background: rgba(46,139,87,0.1); color: var(--green); border: 1px solid rgba(46,139,87,0.25); }
-        .badge.gold { background: rgba(197,160,89,0.1); color: var(--gold); border: 1px solid rgba(197,160,89,0.25); }
-        .badge.red { background: rgba(217,64,64,0.08); color: var(--red); border: 1px solid rgba(217,64,64,0.2); }
-
-        /* ── INLINE CTA ── */
-        .inline-cta {
-            background: linear-gradient(135deg, var(--dark), #2a2a3a);
-            border-radius: 12px; padding: 22px 22px;
-            display: flex; align-items: center; justify-content: space-between; gap: 16px;
-            margin: 28px 0; flex-wrap: wrap;
+        .privacy-contact-box p {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 4px !important;
+            line-height: 1.7;
         }
-        .inline-cta p { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.4; word-break: keep-all; }
-        .inline-cta a {
-            background: var(--gold); color: #fff;
-            font-size: 13px; font-weight: 800; border-radius: 8px;
-            padding: 12px 20px; text-decoration: none; white-space: nowrap;
-            transition: all 0.15s; flex-shrink: 0;
-        }
-        .inline-cta a:hover { background: #b08e4a; }
-
-        /* ── SIMULATOR ── */
-        .sim-wrap { background: var(--gold-bg); border: 1px solid var(--border); border-radius: 10px; padding: 24px 20px; margin-bottom: 20px; }
-        .sim-slider-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-        .sim-slider-label { font-size: 12px; font-weight: 700; color: var(--text-sub); white-space: nowrap; }
-        .sim-slider-val { font-size: 20px; font-weight: 900; color: var(--gold); min-width: 80px; text-align: right; }
-        .range-slider {
-            flex: 1; height: 5px; -webkit-appearance: none; appearance: none;
-            background: linear-gradient(to right, var(--gold), var(--gold)) no-repeat;
-            background-size: 60% 100%;
-            background-color: var(--border); border-radius: 3px; cursor: pointer;
-        }
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 20px; height: 20px;
-            border-radius: 50%; background: var(--gold);
-            box-shadow: 0 2px 8px rgba(197,160,89,0.4); cursor: pointer;
-        }
-        .sim-results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-        .sim-res-item { text-align: center; background: #fff; border-radius: 8px; padding: 14px 10px; border: 1px solid var(--border); }
-        .sim-res-label { font-size: 10px; color: var(--text-light); margin-bottom: 6px; line-height: 1.4; }
-        .sim-res-val { font-size: 16px; font-weight: 900; }
-        .sim-res-val.red { color: var(--red); }
-        .sim-res-val.green { color: var(--green); }
-        .sim-res-val.gold { color: var(--gold); }
-        .sim-highlight-row {
-            background: var(--dark); border-radius: 8px; padding: 16px 18px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .sh-label { font-size: 12px; color: rgba(255,255,255,0.5); }
-        .sh-val { font-size: 22px; font-weight: 900; color: var(--gold); }
-        .sh-5y { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
-
-        /* ── GROWTH TABLE highlight ── */
-        .growth-bep { background: rgba(197,160,89,0.1) !important; }
-        .growth-bep td { color: var(--gold) !important; font-weight: 800 !important; }
-
-        /* ── SIM TABLE active row ── */
-        .report-table tbody tr.sim-active {
-            background: rgba(197,160,89,0.13) !important;
-            outline: 2px solid var(--gold);
-            outline-offset: -1px;
-            position: relative;
-        }
-        .report-table tbody tr.sim-active td {
-            color: var(--dark) !important;
-            font-weight: 800 !important;
-        }
-        .report-table tbody tr.sim-active td.val-red { color: var(--red) !important; }
-        .report-table tbody tr.sim-active td.val-green { color: var(--green) !important; }
-        .report-table tbody tr.sim-active td.val-gold { color: var(--gold) !important; }
-
-        /* ════════════════════════════════
-            MOBILE FIRST — 480px 이하
-        ════════════════════════════════ */
-        @media (max-width: 480px) {
-
-            /* ── COVER CTA ── */
-            .cover-cta-block { padding: 24px 0 0; }
-            .btn-cover-primary { font-size: 15px; padding: 17px 20px; border-radius: 12px; }
-            .btn-cover-primary small { font-size: 11px; }
-            .btn-cover-kakao { font-size: 14px; padding: 15px 20px; border-radius: 12px; min-height: 52px; }
-
-            /* ── FLOAT BTN ── */
-            .float-kakao {
-                bottom: 16px; right: 12px;
-                padding: 12px 16px; font-size: 12px;
-            }
-            /* [추가] 모달 상단 이동 버튼 위치 조정 */
-            .float-top { bottom: 75px; right: 12px; width: 42px; height: 42px; }
-
-            /* ── TOP BAR ── */
-            .top-bar { padding: 9px 16px; gap: 8px; }
-            .top-bar-text { font-size: 11px; }
-            .top-bar-cta { padding: 5px 10px; font-size: 10px; }
-
-            /* ── COVER ── */
-            .cover { padding: 36px 20px 40px; }
-            .cover-title { font-size: 34px; }
-            .cover-subtitle { font-size: 14px; margin-bottom: 32px; }
-
-            /* 커버 메타: 가로 → 세로 */
-            .cover-meta {
-                flex-direction: column;
-                gap: 0;
-                padding-top: 20px;
-            }
-            .cover-meta-item {
-                padding-right: 0;
-                padding-bottom: 14px;
-                margin-bottom: 14px;
-                border-right: none !important;
-                margin-right: 0 !important;
-                border-bottom: 1px solid rgba(255,255,255,0.08);
-                display: flex; align-items: center; gap: 16px;
-            }
-            .cover-meta-item:last-child {
-                border-bottom: none;
-                padding-bottom: 0; margin-bottom: 0;
-            }
-            .cm-label { margin-bottom: 3px; }
-            .cm-val { font-size: 20px; }
-
-            /* TOC */
-            .toc-grid { grid-template-columns: 1fr; gap: 6px; }
-            .toc-item { padding: 10px 12px; }
-
-            /* ── PAGE INDICATOR ── */
-            .page-ind {
-                padding: 7px 16px;
-                font-size: 10px;
-            }
-            .page-ind span:last-child { display: none; }
-
-            /* ── STEP HEADER ── */
-            .step-header { padding: 14px 16px 12px; gap: 10px; }
-            .step-header-title { font-size: 17px; }
-            .step-header-sub { font-size: 11px; }
-
-            /* ── STEP BODY ── */
-            .step-body { padding: 20px 16px 24px; }
-            .sec-label { font-size: 10px; margin-top: 22px; }
-
-            /* ── KPI GRID: 4열 → 2x2 ── */
-            .kpi-grid { grid-template-columns: repeat(2,1fr); }
-            .kpi-item:nth-child(2) { border-right: none; }
-            .kpi-item:nth-child(3) { border-top: 1px solid var(--border); }
-            .kpi-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
-            .kpi-val { font-size: 18px; }
-            .kpi-lbl { font-size: 10px; }
-
-            /* ── TABLES: 가로 스크롤 ── */
-            .report-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                font-size: 12px;
-                margin-left: -16px;
-                margin-right: -16px;
-                width: calc(100% + 32px);
-            }
-            .report-table thead th { padding: 9px 10px; font-size: 11px; }
-            .report-table tbody td { padding: 9px 10px; }
-
-            /* ── WIN-WIN TABLE ── */
-            .ww-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin-left: -16px;
-                margin-right: -16px;
-                width: calc(100% + 32px);
-            }
-            .ww-table th, .ww-table td { padding: 9px 10px; font-size: 11px; white-space: nowrap; }
-
-            /* ── SIMULATOR ── */
-            .sim-wrap { padding: 18px 14px; }
-            .sim-slider-row { gap: 10px; }
-            .sim-slider-label { font-size: 11px; }
-            .sim-slider-val { font-size: 18px; min-width: 60px; }
-            .range-slider::-webkit-slider-thumb { width: 24px; height: 24px; }
-
-            /* 시뮬레이터 결과: 3열 → 3열 유지하되 폰트 축소 */
-            .sim-results-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
-            .sim-res-item { padding: 10px 6px; }
-            .sim-res-label { font-size: 9px; }
-            .sim-res-val { font-size: 13px; }
-
-            /* 시뮬레이터 하이라이트: 가로 → 세로 */
-            .sim-highlight-row {
-                flex-direction: column;
-                gap: 14px;
-                padding: 16px 14px;
-            }
-            .sim-highlight-row a {
-                width: 100%; text-align: center;
-                padding: 14px; font-size: 13px;
-                border-radius: 8px;
-            }
-            .sh-val { font-size: 20px; }
-
-            /* ── CASE BOX ── */
-            .case-box { padding: 20px 16px; }
-            .case-box-stats {
-                grid-template-columns: repeat(3,1fr);
-                gap: 8px;
-            }
-            .cbs-val { font-size: 16px; }
-            .cbs-lbl { font-size: 10px; }
-
-            /* ── INLINE CTA: 가로 → 세로 ── */
-            .inline-cta {
-                flex-direction: column;
-                gap: 14px;
-                padding: 22px 20px !important;
-                text-align: center;
-            }
-            .inline-cta a {
-                width: 100%; text-align: center;
-                padding: 14px 20px; font-size: 14px;
-            }
-
-            /* ── CHECK LIST ── */
-            .check-item { padding: 12px 14px; gap: 10px; }
-            .check-text h5 { font-size: 12px; }
-            .check-text p { font-size: 11px; }
-
-            /* ── LAYER FLOW ── */
-            .layer-item { padding: 14px 16px; }
-            .layer-title { font-size: 14px; }
-            .layer-role { font-size: 11px; }
-            .layer-effect { font-size: 11px; }
-
-            /* ── STEP FLOW (로드맵) ── */
-            .step-flow::before { left: 17px; }
-            .sf-dot { width: 34px; height: 34px; font-size: 11px; }
-            .sf-title { font-size: 14px; }
-            .sf-items { font-size: 11px; }
-
-            /* ── ALERT BOX ── */
-            .alert-box { padding: 13px 14px; gap: 10px; }
-            .ab-text { font-size: 12px; }
-
-            /* ── FAQ ── */
-            .faq-q {
-                padding: 14px 16px;
-                min-height: 52px; /* 터치 타깃 확보 */
-            }
-            .faq-q-wrap { gap: 7px; }
-            .faq-cat { font-size: 9px; padding: 2px 6px; white-space: nowrap; }
-            .faq-q-text { font-size: 12px; }
-            .faq-icon { font-size: 20px; min-width: 20px; }
-            .faq-a { font-size: 12px; padding: 13px 16px 14px; }
-
-            /* ── BADGE STRIP ── */
-            .badge { font-size: 11px; padding: 6px 10px; }
-
-            /* ── FORM ── */
-            .form-section { padding: 32px 20px 36px; }
-            .form-section h2 { font-size: 20px; }
-            .form-section p { font-size: 12px; line-height: 1.75; }
-            .form-row input, .form-row select {
-                padding: 14px 13px;
-                font-size: 16px; /* iOS 줌 방지: 16px 이상 필수 */
-            }
-            .btn-submit {
-                padding: 18px;
-                font-size: 15px;
-                min-height: 56px; /* 터치 타깃 */
-            }
-            .btn-kakao-form {
-                padding: 16px;
-                font-size: 14px;
-                min-height: 52px;
-            }
-            .form-guarantee { font-size: 10px; }
-
-            /* ── FOOTER: 가로 → 세로 ── */
-            .report-footer {
-                flex-direction: column;
-                gap: 14px;
-                text-align: center;
-                padding: 24px 20px;
-            }
-            .rf-info { text-align: center; font-size: 11px; }
-
-            /* ── NOTE ── */
-            .note { font-size: 10px; }
-        }
-
-        /* ── 375px 이하 초소형 대응 ── */
-        @media (max-width: 375px) {
-            .cover-title { font-size: 28px; }
-            .cover { padding: 28px 16px 32px; }
-            .step-body { padding: 18px 14px 20px; }
-            .kpi-val { font-size: 16px; }
-            .sim-res-val { font-size: 12px; }
-            .cbs-val { font-size: 14px; }
-            .case-box-stats { gap: 4px; }
+        .privacy-contact-box .contact-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main) !important;
+            margin-bottom: 8px !important;
         }
     </style>
 </head>
 <body>
 
-<a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="float-top" id="floatTop">
-    <span>↑</span>TOP
-</a>
+<div class="container">
 
-<a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="float-kakao" id="floatKakao">
-    💬 카카오 무료 상담
-</a>
-
-<div class="page">
-
-    <div class="top-bar">
-        <div class="top-bar-text">
-            <span class="pulse"></span>
-            3월 무료 진단 <strong>잔여 3팀</strong> · 신청 후 24시간 내 연락
-        </div>
-        <a href="#apply" class="top-bar-cta">무료 진단 →</a>
+    <!-- 성공 헤더 -->
+    <div class="success-hero">
+        <div class="check-circle">✅</div>
+        <h1>신청이 완료되었습니다</h1>
+        <p>원장님의 자산을 지키는 첫 걸음을 내딛으셨습니다.<br>
+        <strong>영업일 기준 24시간 이내</strong>에 담당 컨설턴트가 직접 연락드립니다.</p>
     </div>
 
-    <div class="cover">
-        <div class="cover-firm">USP Company</div>
-        <div class="cover-title">병원 경영<br><span>통합 솔루션</span><br>보고서</div>
-        <div class="cover-subtitle">세금 방어 · 인건비 최적화 · 자산 승계 완전 설계</div>
-        <div class="cover-meta">
-            <div class="cover-meta-item">
-                <div class="cm-label">대상</div>
-                <div class="cm-val">연 순수익<br>2억 이상</div>
-                <div class="cm-sub">개인사업자 원장님</div>
+    <!-- 진행 타임라인 -->
+    <div class="timeline-wrap">
+        <div class="timeline-title">📋 신청 후 진행 프로세스</div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot active">✓</div>
+                <div class="tl-content">
+                    <h4>진단 접수 및 사전 분석 시작</h4>
+                    <p>원장님의 정보가 정상적으로 접수되었습니다.</p>
+                    <span class="tl-badge">완료</span>
+                </div>
             </div>
-            <div class="cover-meta-item">
-                <div class="cm-label">적용 실적</div>
-                <div class="cm-val">47개+</div>
-                <div class="cm-sub">병원 · 세무조사 0건</div>
+            <div class="tl-item">
+                <div class="tl-dot pending">2</div>
+                <div class="tl-content">
+                    <h4>담당 컨설턴트 배정 및 일정 조율</h4>
+                    <p>카카오톡 또는 전화 중 편하신 방법으로 상담 일정을 잡아드립니다.</p>
+                </div>
             </div>
-            <div class="cover-meta-item">
-                <div class="cm-label">누적 절세</div>
-                <div class="cm-val">138억</div>
-                <div class="cm-sub">2019~2025</div>
+            <div class="tl-item">
+                <div class="tl-dot pending">3</div>
+                <div class="tl-content">
+                    <h4>핵심 리스크 도출 및 1차 브리핑 (유선/화상)</h4>
+                    <p>전문 컨설턴트가 1:1 맞춤형 브리핑을 진행합니다.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot pending">4</div>
+                <div class="tl-content">
+                    <h4>맞춤 절세 시뮬레이션 보고서 전달</h4>
+                    <p>통상 300만 원 상당의 경영 진단 보고서를 무료 제공합니다.</p>
+                </div>
             </div>
         </div>
-        <div class="cover-cta-block">
-            <a href="#apply" class="btn-cover-primary">
-                📊 무료 병원 경영 진단 신청
-                <small>절세 + 인건비 + 승계 시뮬레이션 제공</small>
+    </div>
+
+    <!-- 리포트 다운로드 -->
+    <div class="download-section">
+    <span class="section-label">FREE REPORT &amp; TOOL</span>
+
+    <a href="USP_Tax_Report.pdf" class="dl-card" target="_blank">
+        <div class="dl-icon" style="background:#ff3b30;">📄</div>
+        <div class="dl-text">
+            <span>2026 병의원 절세 시크릿 리포트</span>
+            <small>클릭 시 PDF가 새 창에서 열립니다</small>
+        </div>
+        <div class="dl-arrow">→</div>
+    </a>
+
+    <a href="USP_Salary_Guide.xlsx" class="dl-card" download>
+        <div class="dl-icon" style="background:#34c759;">📊</div>
+        <div class="dl-text">
+            <span>페이닥터 급여구조 최적화 가이드</span>
+            <small>엑셀 파일을 다운로드하여 직접 입력해 보세요</small>
+        </div>
+        <div class="dl-arrow">↓</div>
+    </a>
+
+    <p class="dl-note">다운로드가 되지 않을 경우 아래 카카오 채널로 문의주세요.</p>
+</div>
+
+    <!-- 유튜브 채널 -->
+    <div class="links-section bg-light">
+        <span class="section-label">▶ Visual Insight — YouTube</span>
+        <div class="link-grid">
+            <a href="https://www.youtube.com/@LNK1472" target="_blank" rel="noopener" class="link-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="44" height="44" style="margin-bottom:12px;display:block;">
+                    <rect width="48" height="48" rx="12" fill="#FF0000"/>
+                    <path d="M38.5 16.5s-.4-2.6-1.5-3.7c-1.4-1.5-3-.5-3.7-.1C30.5 14 24 14 24 14s-6.5 0-9.3 1.7c-.7.4-2.3-.4-3.7.1-1.1 1.1-1.5 3.7-1.5 3.7S9 19.3 9 22.1v2.6c0 2.8.5 5.6.5 5.6s.4 2.6 1.5 3.7c1.4 1.5 3.3 1.4 4.1 1.6C17.5 36 24 36 24 36s6.5 0 9.3-1.7c.7-.4 2.3.4 3.7-.1 1.1-1.1 1.5-3.7 1.5-3.7s.5-2.8.5-5.6v-2.6c0-2.8-.5-5.6-.5-5.6z" fill="#FF0000"/>
+                    <path d="M20 29.5v-11l10 5.5-10 5.5z" fill="#fff"/>
+                </svg>
+                <div class="lc-name">절세가인</div>
+                <div class="lc-sub">유튜브 채널</div>
             </a>
-            <a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="btn-cover-kakao">
-                💬 카카오톡 무료 상담
+            <a href="https://www.youtube.com/@USPCOMPANY_1" target="_blank" rel="noopener" class="link-card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="44" height="44" style="margin-bottom:12px;display:block;">
+                    <rect width="48" height="48" rx="12" fill="#FF0000"/>
+                    <path d="M38.5 16.5s-.4-2.6-1.5-3.7c-1.4-1.5-3-.5-3.7-.1C30.5 14 24 14 24 14s-6.5 0-9.3 1.7c-.7.4-2.3-.4-3.7.1-1.1 1.1-1.5 3.7-1.5 3.7S9 19.3 9 22.1v2.6c0 2.8.5 5.6.5 5.6s.4 2.6 1.5 3.7c1.4 1.5 3.3 1.4 4.1 1.6C17.5 36 24 36 24 36s6.5 0 9.3-1.7c.7-.4 2.3.4 3.7-.1 1.1-1.1 1.5-3.7 1.5-3.7s.5-2.8.5-5.6v-2.6c0-2.8-.5-5.6-.5-5.6z" fill="#FF0000"/>
+                    <path d="M20 29.5v-11l10 5.5-10 5.5z" fill="#fff"/>
+                </svg>
+                <div class="lc-name">유에스피</div>
+                <div class="lc-sub">유튜브 채널</div>
             </a>
-            <p class="cover-cta-disclaimer">※ 초기 진단 및 시뮬레이션 보고서 무료 제공 | 통상 300만 원 상당</p>
-        </div>
-        <div class="cover-toc" style="margin-top:36px;">
-            <div class="cover-toc-title">보고서 구성</div>
-            <div class="toc-grid">
-                <a href="#step01" class="toc-item"><span class="toc-num">01</span><span class="toc-text">경영 진단 대시보드</span></a>
-                <a href="#step02" class="toc-item"><span class="toc-num">02</span><span class="toc-text">절세 시뮬레이션</span></a>
-                <a href="#step03" class="toc-item"><span class="toc-num">03</span><span class="toc-text">MSO 구조 설계</span></a>
-                <a href="#step04" class="toc-item"><span class="toc-num">04</span><span class="toc-text">성과급 시스템</span></a>
-                <a href="#step05" class="toc-item"><span class="toc-num">05</span><span class="toc-text">성장 시나리오 ROI</span></a>
-                <a href="#step06" class="toc-item"><span class="toc-num">06</span><span class="toc-text">4-Layer 자산 승계</span></a>
-                <a href="#step07" class="toc-item"><span class="toc-num">07</span><span class="toc-text">3중 방어 체크리스트</span></a>
-                <a href="#step08" class="toc-item"><span class="toc-num">08</span><span class="toc-text">12개월 로드맵</span></a>
-                <a href="#step09" class="toc-item"><span class="toc-num">09</span><span class="toc-text">케이스</span></a>
-                <a href="#step10" class="toc-item"><span class="toc-num">10</span><span class="toc-text">FAQ · 무료 진단 신청</span></a>
-            </div>
         </div>
     </div>
 
-    <div class="step-section" id="step01">
-        <div class="page-ind"><span><strong>STEP 01</strong> · 경영 진단 대시보드</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div>
-                <div class="step-badge">STEP 01</div>
-            </div>
-            <div>
-                <div class="step-header-title">경영 진단 대시보드</div>
-                <div class="step-header-sub">지금 원장님 병원에서 새고 있는 돈을 한눈에 요약합니다.</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="sec-label">핵심 KPI — 연 순수익 5억 기준</div>
-            <div class="kpi-grid">
-                <div class="kpi-item"><div class="kpi-val" style="color:var(--red)">49.5%</div><div class="kpi-lbl">현재 최고 소득세율</div></div>
-                <div class="kpi-item"><div class="kpi-val">16~22%</div><div class="kpi-lbl">MSO 구조 실효세율</div></div>
-                <div class="kpi-item"><div class="kpi-val">8,840만</div><div class="kpi-lbl">연간 절세 효과</div></div>
-                <div class="kpi-item"><div class="kpi-val" style="color:var(--red)">5.4억</div><div class="kpi-lbl">NET 계약 연간 숨은 손실</div></div>
-            </div>
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
+    <!-- 네이버 블로그 -->
+    <div class="links-section bg-white">
+        <span class="section-label">✏️ Deep Column — Naver Blog</span>
+        <div class="link-grid">
+            <a href="https://blog.naver.com/kosan0811" target="_blank" rel="noopener" class="link-card">
+                <div class="link-card-icon-wrap" style="background:rgba(3,199,90,0.08);color:#03C75A;font-size:18px;font-weight:900;">N</div>
+                <div class="lc-name">코스메스</div>
+                <div class="lc-sub">네이버 블로그</div>
+            </a>
+            <a href="https://blog.naver.com/airfn38" target="_blank" rel="noopener" class="link-card">
+                <div class="link-card-icon-wrap" style="background:rgba(3,199,90,0.08);color:#03C75A;font-size:18px;font-weight:900;">N</div>
+                <div class="lc-name">유에스피</div>
+                <div class="lc-sub">네이버 블로그</div>
+            </a>
         </div>
     </div>
 
-    <div class="step-section" id="step02">
-        <div class="page-ind"><span><strong>STEP 02</strong> · 절세 시뮬레이션</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 02</div></div>
-            <div>
-                <div class="step-header-title">절세 시뮬레이션</div>
-                <div class="step-header-sub">순수익 구간별 정밀 시뮬레이션 (2026년 세율 기준)</div>
+    <!-- 카카오 채널 -->
+    <div class="links-section bg-light">
+        <span class="section-label">💬 Direct Contact — Kakao</span>
+        <a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" rel="noopener" class="kakao-card">
+            <div class="kakao-icon-wrap">💬</div>
+            <div class="kc-text">
+                <span class="kc-name">유에스피 카톡 채널</span>
+                <span class="kc-sub">병의원 전문 컨설팅 문의</span>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
-
-    <div class="step-section" id="step03">
-        <div class="page-ind"><span><strong>STEP 03</strong> · MSO 구조 설계</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 03</div></div>
-            <div>
-                <div class="step-header-title">MSO 구조 설계</div>
-                <div class="step-header-sub">수익 분산 3단계 + 실체 요건 체크리스트</div>
+            <span class="kc-arrow">→</span>
+        </a>
+        <a href="http://pf.kakao.com/_xoxnxoxeG/chat" target="_blank" rel="noopener" class="kakao-card">
+            <div class="kakao-icon-wrap">💬</div>
+            <div class="kc-text">
+                <span class="kc-name">코스메스 카톡 채널</span>
+                <span class="kc-sub">비공개 1:1 상담 신청</span>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
+            <span class="kc-arrow">→</span>
+        </a>
     </div>
 
-    <div class="step-section" id="step04">
-        <div class="page-ind"><span><strong>STEP 04</strong> · 성과급 시스템</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 04</div></div>
-            <div>
-                <div class="step-header-title">성과급 시스템</div>
-                <div class="step-header-sub">인건비를 자동 성장 엔진으로</div>
+    <footer>
+        <p><strong>USP COMPANY</strong></p>
+        <p>010-2289-4931 &nbsp;|&nbsp; usp@uspcompany.co.kr</p>
+        <p><a href="http://www.uspcompany.co.kr" target="_blank" rel="noopener">www.uspcompany.co.kr</a></p>
+        <p style="margin-top:10px;">
+            <a href="#" onclick="openPrivacyModal(event)">개인정보처리방침</a>
+        </p>
+        <p>© 2026 USP COMPANY. All Rights Reserved.</p>
+    </footer>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     개인정보처리방침 모달
+═══════════════════════════════════════════════ -->
+<div class="privacy-overlay" id="privacyOverlay" onclick="handleOverlayClick(event)">
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-header">
+            <div class="privacy-modal-header-left">
+                <span class="privacy-modal-tag">LEGAL</span>
+                <span class="privacy-modal-title">개인정보처리방침</span>
             </div>
+            <button class="privacy-close-btn" onclick="closePrivacyModal()">✕</button>
         </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
+        <div class="privacy-modal-body">
+            <span class="privacy-date">📅 시행일: 2026년 1월 1일 · 최종 개정: 2026년 3월 1일</span>
 
-    <div class="step-section" id="step05">
-        <div class="page-ind"><span><strong>STEP 05</strong> · 성장 시나리오 ROI</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 05</div></div>
-            <div>
-                <div class="step-header-title">성장 시나리오별 병원 ROI</div>
-                <div class="step-header-sub">성과급 도입 후 성장률에 따른 병원 잔여이익 변화</div>
+            <div class="privacy-highlight">
+                <p>USP COMPANY(이하 "회사")는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령을 준수하며, 이용자의 개인정보를 안전하게 처리하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.</p>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
 
-    <div class="step-section" id="step06">
-        <div class="page-ind"><span><strong>STEP 06</strong> · 4-Layer 자산 승계</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 06</div></div>
-            <div>
-                <div class="step-header-title">4-Layer 지배구조 자산 승계</div>
-                <div class="step-header-sub">자녀에게 증여세 없이 자산을 이전하는 구조</div>
+            <!-- 제1조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 01</div>
+                <h3>개인정보의 처리 목적</h3>
+                <p>회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+                <table class="privacy-table">
+                    <tr><th>처리 목적</th><th>상세 내용</th></tr>
+                    <tr><td>서비스 제공 및 상담</td><td>무료 절세 진단 상담 신청 접수, 맞춤형 컨설팅 서비스 제공, 상담 일정 조율 및 결과 전달</td></tr>
+                    <tr><td>고객 관리</td><td>고객 식별 및 본인 확인, 고객 문의 응대, 서비스 개선 및 만족도 조사</td></tr>
+                    <tr><td>마케팅 및 홍보</td><td>신규 서비스 및 이벤트 안내 (별도 동의 시에 한함)</td></tr>
+                </table>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
 
-    <div class="step-section" id="step07">
-        <div class="page-ind"><span><strong>STEP 07</strong> · 3중 방어 체크리스트</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 07</div></div>
-            <div>
-                <div class="step-header-title">3중 방어 거버넌스</div>
-                <div class="step-header-sub">국세청·의료법 공격 차단</div>
+            <!-- 제2조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 02</div>
+                <h3>처리하는 개인정보 항목</h3>
+                <p>회사는 다음의 개인정보 항목을 처리하고 있습니다.</p>
+                <table class="privacy-table">
+                    <tr><th>구분</th><th>수집 항목</th><th>수집 방법</th></tr>
+                    <tr><td><strong>필수 항목</strong></td><td>성함, 휴대폰 번호, 진료과목, 월 매출 구간, 병원 소재지(지역)</td><td>홈페이지 상담 신청 폼</td></tr>
+                    <tr><td><strong>선택 항목</strong></td><td>주요 고민 사항 (소득세 절감, MSO 구조 설계, 자녀 자산 이전, 인건비 절감)</td><td>홈페이지 상담 신청 폼</td></tr>
+                    <tr><td><strong>자동 수집</strong></td><td>접속 IP, 쿠키, 방문 일시, 서비스 이용 기록</td><td>시스템 자동 수집</td></tr>
+                </table>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
 
-    <div class="step-section" id="step08">
-        <div class="page-ind"><span><strong>STEP 08</strong> · 12개월 로드맵</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 08</div></div>
-            <div>
-                <div class="step-header-title">12개월 실행 로드맵</div>
-                <div class="step-header-sub">단계별 완성 플랜</div>
+            <!-- 제3조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 03</div>
+                <h3>개인정보의 처리 및 보유 기간</h3>
+                <p>회사는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.</p>
+                <table class="privacy-table">
+                    <tr><th>보유 항목</th><th>보유 기간</th><th>근거</th></tr>
+                    <tr><td>상담 신청 정보</td><td>수집일로부터 3년</td><td>서비스 제공 및 분쟁 처리</td></tr>
+                    <tr><td>계약·청약 철회 기록</td><td>5년</td><td>전자상거래 등에서의 소비자 보호에 관한 법률</td></tr>
+                    <tr><td>소비자 불만·분쟁 처리 기록</td><td>3년</td><td>전자상거래 등에서의 소비자 보호에 관한 법률</td></tr>
+                    <tr><td>접속 로그</td><td>3개월</td><td>통신비밀보호법</td></tr>
+                </table>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
 
-    <div class="step-section" id="step09">
-        <div class="page-ind"><span><strong>STEP 09</strong> · 케이스 스터디</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 09</div></div>
-            <div>
-                <div class="step-header-title">케이스 스터디</div>
-                <div class="step-header-sub">실제 적용 병원 실적</div>
+            <!-- 제4조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 04</div>
+                <h3>개인정보의 제3자 제공</h3>
+                <p>회사는 정보주체의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.</p>
+                <p>① 정보주체가 사전에 동의한 경우<br>② 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</p>
+                <p>서비스 제공을 위해 아래와 같이 개인정보를 위탁하고 있습니다.</p>
+                <table class="privacy-table">
+                    <tr><th>수탁 업체</th><th>위탁 업무</th><th>보유 기간</th></tr>
+                    <tr><td>Google LLC</td><td>상담 신청 데이터 수집·저장 (Google Apps Script)</td><td>위탁 계약 종료 시까지</td></tr>
+                </table>
             </div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
 
-    <div class="step-section" id="step10">
-        <div class="page-ind"><span><strong>STEP 10</strong> · FAQ · 무료 진단</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 10</div></div>
-            <div><div class="step-header-title">자주 묻는 질문</div></div>
-        </div>
-        <div class="step-body">
-            <a href="javascript:window.scrollTo({top:0, behavior:'smooth'});" class="section-top-btn">맨 위로 가기 ↑</a>
-        </div>
-    </div>
+            <!-- 제5조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 05</div>
+                <h3>정보주체의 권리·의무 및 행사 방법</h3>
+                <p>정보주체는 회사에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.</p>
+                <p>① <strong>개인정보 열람 요구</strong><br>② <strong>오류 등이 있을 경우 정정 요구</strong><br>③ <strong>삭제 요구</strong><br>④ <strong>처리 정지 요구</strong></p>
+                <p>권리 행사는 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며, 회사는 이에 대해 지체 없이 조치하겠습니다.</p>
+            </div>
 
-    <div class="form-section" id="apply">
-        <button class="btn-submit" onclick="submitForm()">무료 경영 진단 신청하기 →</button>
-    </div>
+            <!-- 제6조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 06</div>
+                <h3>개인정보의 안전성 확보 조치</h3>
+                <p>회사는 「개인정보 보호법」 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적·관리적·물리적 조치를 하고 있습니다.</p>
+                <p>① <strong>내부관리계획 수립·시행</strong> : 개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.<br>② <strong>접속기록의 보관 및 위변조 방지</strong> : 개인정보처리시스템에 접속한 기록을 최소 1년 이상 보관·관리하고 있습니다.<br>③ <strong>개인정보에 대한 접근 제한</strong> : 개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여·변경·말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있습니다.<br>④ <strong>비인가자에 대한 출입 통제</strong> : 개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립·운영하고 있습니다.</p>
+            </div>
 
-    <div class="report-footer">
-        <div><div class="rf-brand">USP COMPANY</div></div>
-        <div class="rf-info">Copyright © 2026 USP Company</div>
+            <!-- 제7조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 07</div>
+                <h3>개인정보 자동 수집 장치의 설치·운영 및 거부</h3>
+                <p>회사는 이용자에게 개별적인 맞춤서비스를 제공하기 위해 이용 정보를 저장하고 수시로 불러오는 '쿠키(cookie)'를 사용합니다.</p>
+                <p>쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 이용자는 쿠키 설치에 대한 선택권을 가지고 있습니다. 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수 있습니다.</p>
+            </div>
+
+            <!-- 제8조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 08</div>
+                <h3>개인정보 보호책임자</h3>
+                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 정보주체의 개인정보 관련 불만 처리 및 피해 구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+                <div class="privacy-contact-box">
+                    <p class="contact-name">🛡️ 개인정보 보호책임자</p>
+                    <p><strong>소속 / 직위:</strong> USP COMPANY / 팀장</p>
+                    <p><strong>연락처:</strong> 010-2289-4931</p>
+                    <p><strong>이메일:</strong> usp@uspcompany.co.kr</p>
+                    <p><strong>홈페이지:</strong> www.uspcompany.co.kr</p>
+                </div>
+                <p style="margin-top:14px;">정보주체께서는 회사의 서비스를 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만 처리, 피해 구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. 회사는 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.</p>
+            </div>
+
+            <!-- 제9조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 09</div>
+                <h3>개인정보 처리방침 변경</h3>
+                <p>① 이 개인정보처리방침은 2026년 1월 1일부터 적용됩니다.</p>
+                <p>② 이전의 개인정보처리방침은 아래에서 확인하실 수 있습니다. 본 처리방침에 변경이 있는 경우, 변경 사항을 웹사이트 공지사항을 통하여 공지합니다.</p>
+            </div>
+
+            <!-- 제10조 -->
+            <div class="privacy-section">
+                <div class="privacy-section-num">ARTICLE 10</div>
+                <h3>권익침해 구제 방법</h3>
+                <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁 해결이나 상담 등을 신청할 수 있습니다.</p>
+                <div class="privacy-contact-box">
+                    <p>📞 <strong>개인정보침해신고센터</strong> (한국인터넷진흥원): (국번없이) 118</p>
+                    <p>⚖️ <strong>개인정보분쟁조정위원회</strong>: (국번없이) 1833-6972</p>
+                    <p>🔍 <strong>대검찰청 사이버수사과</strong>: (국번없이) 1301</p>
+                    <p>👮 <strong>경찰청 사이버수사국</strong>: (국번없이) 182</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
 <script>
-    // [수정] 스크롤 이벤트에 상단 이동 버튼 노출 로직 추가
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const showThreshold = 400; // 400px 이상 스크롤 시 나타남
-        
-        document.getElementById('floatKakao').classList.toggle('show', scrollY > showThreshold);
-        document.getElementById('floatTop').classList.toggle('show', scrollY > showThreshold);
-    });
+    /* ═══════════════════════════════════════
+       개인정보처리방침 모달 제어
+    ═══════════════════════════════════════ */
+    function openPrivacyModal(e) {
+        if (e) e.preventDefault();
+        var overlay = document.getElementById('privacyOverlay');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.querySelector('.privacy-modal-body').scrollTop = 0;
+    }
 
-    // FADE IN ON SCROLL
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.style.opacity = '1';
-                e.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.step-section').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        io.observe(el);
-    });
+    function closePrivacyModal() {
+        var overlay = document.getElementById('privacyOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
-    // SIMULATOR 및 기타 기존 스크립트 생략 (기존 파일 내용 그대로 유지)
-    const simData = [
-        { label:'2억',   before:'6,840만',      after:'3,600만',      rate:'47.4%', save:'3,240만',      cumul:'3억 2,400만' },
-        { label:'3억',   before:'1억 1,400만',   after:'5,800만',      rate:'49.1%', save:'5,600만',      cumul:'5억 6,000만' },
-        { label:'5억',   before:'1억 8,400만',   after:'9,530만',      rate:'48.2%', save:'8,870만',      cumul:'8억 8,700만' },
-        { label:'7억',   before:'2억 8,300만',   after:'1억 3,200만',  rate:'53.4%', save:'1억 5,100만',  cumul:'15억 1,000만' },
-        { label:'10억',  before:'4억 3,200만',   after:'1억 8,800만',  rate:'56.5%', save:'2억 4,400만',  cumul:'24억 4,000만' },
-        { label:'15억',  before:'6억 8,000만',   after:'2억 8,500만',  rate:'58.1%', save:'3억 9,500만',  cumul:'39억 5,000만' },
-        { label:'20억',  before:'9억 2,700만',   after:'3억 8,000만',  rate:'59.0%', save:'5억 4,700만',  cumul:'54억 7,000만' },
-    ];
-    const ss = document.getElementById('simSlider');
-    function updateSim() {
-        const idx = parseInt(ss.value);
-        const d = simData[idx];
-        if(!d) return;
-        document.getElementById('simDisplay').textContent = d.label;
-        document.getElementById('simBefore').textContent = d.before;
-        document.getElementById('simAfter').textContent = d.after;
-        document.getElementById('simRate').textContent = d.rate;
-        document.getElementById('simSave').textContent = d.save;
-        document.getElementById('simCumul').textContent = d.cumul;
-        const pct = (idx / (simData.length - 1)) * 100;
-        ss.style.backgroundSize = pct + '% 100%';
-        for (let i = 0; i < simData.length; i++) {
-            const row = document.getElementById('simRow' + i);
-            if (row) i === idx ? row.classList.add('sim-active') : row.classList.remove('sim-active');
+    function handleOverlayClick(e) {
+        if (e.target === document.getElementById('privacyOverlay')) {
+            closePrivacyModal();
         }
     }
-    ss.addEventListener('input', updateSim);
-    updateSim();
 
-    function toggleFaq(el) {
-        const item = el.closest('.faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-    }
-
-    function submitForm() {
-        // 기존 폼 전송 로직 유지
-        alert('신청 로직이 작동합니다.');
-    }
+    /* ESC 키로 모달 닫기 */
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closePrivacyModal();
+        }
+    });
 </script>
+
 </body>
 </html>
+
+
+
+
+
