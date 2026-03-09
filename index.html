@@ -42,47 +42,17 @@
         .float-kakao.show { opacity: 1; transform: translateY(0); }
 
         /* ── COVER ── */
-        .cover {
-            background: var(--dark);
-            padding: 64px 40px 56px;
-            position: relative; overflow: hidden;
-        }
+        .cover { background: var(--dark); padding: 64px 40px 56px; position: relative; overflow: hidden; }
         .cover::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 60px,
-                rgba(197,160,89,0.03) 60px,
-                rgba(197,160,89,0.03) 61px
-            );
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;
+            background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(197,160,89,0.03) 60px, rgba(197,160,89,0.03) 61px);
         }
-        .cover-firm {
-            font-size: 11px; font-weight: 700; letter-spacing: 2px;
-            color: var(--gold); text-transform: uppercase;
-            margin-bottom: 36px; position: relative;
-        }
-        .cover-firm::after {
-            content: '·  경영전략팀';
-            color: rgba(255,255,255,0.3); font-weight: 400; letter-spacing: 0;
-        }
-        .cover-title {
-            font-size: 44px; font-weight: 900; color: #fff;
-            line-height: 1.12; margin-bottom: 10px; position: relative;
-            word-break: keep-all;
-        }
+        .cover-firm { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 36px; position: relative; }
+        .cover-firm::after { content: '·  경영전략팀'; color: rgba(255,255,255,0.3); font-weight: 400; letter-spacing: 0; }
+        .cover-title { font-size: 44px; font-weight: 900; color: #fff; line-height: 1.12; margin-bottom: 10px; position: relative; word-break: keep-all; }
         .cover-title span { color: var(--gold); }
-        .cover-subtitle {
-            font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.5);
-            font-style: italic; margin-bottom: 48px; position: relative;
-        }
-        .cover-meta {
-            display: flex; gap: 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 28px; position: relative;
-        }
+        .cover-subtitle { font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.5); font-style: italic; margin-bottom: 48px; position: relative; }
+        .cover-meta { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; position: relative; }
         .cover-meta-item { flex: 1; padding-right: 24px; }
         .cover-meta-item:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); margin-right: 24px; }
         .cm-label { font-size: 10px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 6px; }
@@ -91,1433 +61,151 @@
         .cover-toc { position: relative; margin-top: 40px; }
         .cover-toc-title { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 14px; }
         .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .toc-item {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px 14px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 8px; cursor: pointer;
-            transition: background 0.2s;
-            text-decoration: none;
-        }
+        .toc-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
         .toc-item:hover { background: rgba(197,160,89,0.1); border-color: rgba(197,160,89,0.3); }
         .toc-num { font-size: 11px; font-weight: 900; color: var(--gold); min-width: 24px; }
         .toc-text { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.4; word-break: keep-all; }
 
         /* ── COVER CTA ── */
-        .cover-cta-block {
-            background: transparent;
-            padding: 32px 0 0;
-        }
-        .btn-cover-primary {
-            display: block; width: 100%;
-            padding: 18px 24px; margin-bottom: 12px;
-            background: var(--gold);
-            color: #fff; font-size: 16px; font-weight: 900;
-            border-radius: 14px; text-align: center;
-            text-decoration: none; border: none; cursor: pointer;
-            font-family: 'Pretendard', sans-serif;
-            letter-spacing: -0.02em; line-height: 1.4;
-            box-shadow: 0 6px 24px rgba(197,160,89,0.3);
-            transition: all 0.2s;
-        }
+        .btn-cover-primary { display: block; width: 100%; padding: 18px 24px; margin-bottom: 12px; background: var(--gold); color: #fff; font-size: 16px; font-weight: 900; border-radius: 14px; text-align: center; text-decoration: none; border: none; cursor: pointer; font-family: 'Pretendard', sans-serif; box-shadow: 0 6px 24px rgba(197,160,89,0.3); transition: all 0.2s; }
         .btn-cover-primary:hover { background: #b08e4a; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(197,160,89,0.4); }
         .btn-cover-primary small { display: block; font-size: 12px; font-weight: 600; opacity: 0.88; margin-top: 4px; }
-        .btn-cover-kakao {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            width: 100%; padding: 16px 24px;
-            background: var(--kakao); color: #3C1E1E;
-            font-size: 15px; font-weight: 800;
-            border-radius: 14px; text-decoration: none; border: none; cursor: pointer;
-            font-family: 'Pretendard', sans-serif;
-            letter-spacing: -0.02em;
-            transition: all 0.2s;
-        }
-        .btn-cover-kakao:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(254,229,0,0.45); }
-        .cover-cta-disclaimer {
-            font-size: 11px; color: rgba(255,255,255,0.4);
-            text-align: center; margin-top: 12px; line-height: 1.6;
-        }
+        .btn-cover-kakao { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 24px; background: var(--kakao); color: #3C1E1E; font-size: 15px; font-weight: 800; border-radius: 14px; text-decoration: none; transition: all 0.2s; }
 
-        /* ── TOP BAR (urgency) ── */
-        .top-bar {
-            background: var(--gold-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 10px 28px;
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-        }
+        /* ── TOP BAR ── */
+        .top-bar { background: var(--gold-bg); border-bottom: 1px solid var(--border); padding: 10px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .top-bar-text { font-size: 12px; color: var(--text-sub); }
         .top-bar-text strong { color: var(--red); font-weight: 800; }
         .pulse { display: inline-block; width: 6px; height: 6px; background: var(--red); border-radius: 50%; margin-right: 6px; animation: pulse 1.2s infinite; }
         @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-        .top-bar-cta {
-            font-size: 11px; font-weight: 800; color: var(--gold);
-            border: 1px solid var(--gold); border-radius: 50px;
-            padding: 5px 12px; text-decoration: none; white-space: nowrap;
-            transition: all 0.15s;
-        }
-        .top-bar-cta:hover { background: var(--gold); color: #fff; }
+        .top-bar-cta { font-size: 11px; font-weight: 800; color: var(--gold); border: 1px solid var(--gold); border-radius: 50px; padding: 5px 12px; text-decoration: none; white-space: nowrap; }
 
         /* ── STEP SECTION ── */
         .step-section { border-bottom: 1px solid var(--border-light); }
-        .step-header {
-            background: var(--dark2);
-            padding: 20px 28px 18px;
-            display: flex; align-items: center; gap: 14px;
-        }
-        .step-badge {
-            background: var(--gold); color: #fff;
-            font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
-            padding: 5px 10px; border-radius: 4px; white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .step-header-title { font-size: 20px; font-weight: 900; color: #fff; line-height: 1.3; word-break: keep-all; }
-        .step-header-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 3px; font-style: italic; }
+        .step-header { background: var(--dark2); padding: 20px 28px 18px; display: flex; align-items: center; gap: 14px; }
+        .step-badge { background: var(--gold); color: #fff; font-size: 10px; font-weight: 900; letter-spacing: 1.5px; padding: 5px 10px; border-radius: 4px; }
+        .step-header-title { font-size: 20px; font-weight: 900; color: #fff; line-height: 1.3; }
         .step-body { padding: 28px 28px 32px; }
 
         /* ── TABLES ── */
         .report-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
         .report-table thead tr { background: rgba(197,160,89,0.12); }
-        .report-table thead th {
-            padding: 11px 14px; font-size: 12px; font-weight: 800;
-            color: var(--gold); text-align: center;
-            border-bottom: 2px solid var(--gold);
-        }
+        .report-table thead th { padding: 11px 14px; font-size: 12px; font-weight: 800; color: var(--gold); text-align: center; border-bottom: 2px solid var(--gold); }
         .report-table thead th:first-child { text-align: left; }
-        .report-table tbody tr { border-bottom: 1px solid var(--border-light); transition: background 0.1s; }
-        .report-table tbody tr:hover { background: var(--gold-bg); }
-        .report-table tbody tr.highlight { background: rgba(197,160,89,0.08); font-weight: 700; }
-        .report-table tbody tr.highlight td { color: var(--dark); }
-        .report-table tbody tr.danger td:first-child { color: var(--red); font-weight: 700; }
-        .report-table tbody td { padding: 11px 14px; color: var(--text-sub); text-align: center; }
+        .report-table tbody td { padding: 11px 14px; color: var(--text-sub); text-align: center; border-bottom: 1px solid var(--border-light); }
         .report-table tbody td:first-child { text-align: left; }
-        .report-table tbody td.val-red { color: var(--red); font-weight: 800; }
-        .report-table tbody td.val-green { color: var(--green); font-weight: 800; }
-        .report-table tbody td.val-gold { color: var(--gold); font-weight: 800; }
-        .report-table tfoot td {
-            padding: 12px 14px; font-size: 12px; font-weight: 800;
-            background: var(--dark); color: var(--gold);
-            text-align: center;
-        }
-        .report-table tfoot td:first-child { text-align: left; color: rgba(255,255,255,0.6); }
-
-        /* ── SECTION LABEL ── */
-        .sec-label {
-            font-size: 10px; font-weight: 800; letter-spacing: 2px;
-            color: var(--gold); text-transform: uppercase;
-            border-left: 3px solid var(--gold); padding-left: 10px;
-            margin-bottom: 14px; margin-top: 28px;
-        }
-        .sec-label:first-child { margin-top: 0; }
+        .report-table tr.highlight { background: rgba(197,160,89,0.08); font-weight: 700; }
+        .val-red { color: var(--red); font-weight: 800; }
+        .val-green { color: var(--green); font-weight: 800; }
+        .val-gold { color: var(--gold); font-weight: 800; }
 
         /* ── KPI GRID ── */
-        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
         .kpi-item { padding: 18px 14px; text-align: center; border-right: 1px solid var(--border); }
         .kpi-item:last-child { border-right: none; }
-        .kpi-item:nth-child(3), .kpi-item:nth-child(4) { border-top: none; }
         .kpi-val { font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 5px; }
-        .kpi-lbl { font-size: 11px; color: var(--text-light); line-height: 1.4; }
-        .kpi-sub { font-size: 10px; color: var(--text-light); margin-top: 3px; font-style: italic; }
+        .kpi-lbl { font-size: 11px; color: var(--text-light); }
 
-        /* ── COMPARISON BLOCK ── */
-        .compare-block {
-            display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
-            border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .compare-col { padding: 20px 18px; }
-        .compare-col.before { background: #FFF5F5; }
-        .compare-col.after { background: #F0FFF4; }
-        .compare-arrow {
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 12px; background: var(--gold-bg);
-            font-size: 20px; color: var(--gold); font-weight: 900;
-        }
-        .cmp-tag { font-size: 10px; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
-        .cmp-tag.bad { color: var(--red); }
-        .cmp-tag.good { color: var(--green); }
-        .cmp-val { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
-        .cmp-val.bad { color: var(--red); }
-        .cmp-val.good { color: var(--green); }
-        .cmp-desc { font-size: 12px; color: var(--text-light); line-height: 1.5; }
-
-        /* ── CHECKLIST ── */
-        .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .check-item {
-            display: flex; align-items: flex-start; gap: 12px;
-            padding: 14px 16px; border-radius: 8px;
-            border: 1px solid var(--border-light);
-        }
-        .check-item.pass { border-color: rgba(46,139,87,0.25); background: rgba(46,139,87,0.04); }
-        .check-item.fail { border-color: rgba(217,64,64,0.25); background: rgba(217,64,64,0.04); }
-        .check-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-        .check-text h5 { font-size: 13px; font-weight: 800; margin-bottom: 3px; }
-        .check-text p { font-size: 12px; color: var(--text-sub); line-height: 1.55; }
-
-        /* ── STEP FLOW ── */
-        .step-flow { display: flex; flex-direction: column; gap: 0; position: relative; }
-        .step-flow::before {
-            content: ''; position: absolute;
-            left: 18px; top: 20px; bottom: 20px; width: 2px;
-            background: linear-gradient(to bottom, var(--gold), rgba(197,160,89,0.1));
-        }
-        .sf-item { display: flex; gap: 18px; padding-bottom: 24px; position: relative; }
-        .sf-dot {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: var(--dark); border: 2px solid var(--gold);
-            color: var(--gold); font-size: 12px; font-weight: 900;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; z-index: 1;
-        }
-        .sf-content { flex: 1; padding-top: 6px; }
-        .sf-phase { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--gold); margin-bottom: 3px; }
-        .sf-title { font-size: 15px; font-weight: 900; margin-bottom: 5px; }
-        .sf-items { font-size: 12px; color: var(--text-sub); line-height: 1.85; }
+        /* ── SECTION LABEL ── */
+        .sec-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--gold); border-left: 3px solid var(--gold); padding-left: 10px; margin-bottom: 14px; margin-top: 28px; text-transform: uppercase; }
 
         /* ── ALERT BOX ── */
-        .alert-box {
-            border-radius: 8px; padding: 16px 18px; margin-bottom: 16px;
-            display: flex; gap: 12px; align-items: flex-start;
-        }
-        .alert-box.warning { background: rgba(217,64,64,0.06); border: 1px solid rgba(217,64,64,0.2); }
+        .alert-box { border-radius: 8px; padding: 16px 18px; margin-bottom: 16px; display: flex; gap: 12px; }
         .alert-box.info { background: rgba(197,160,89,0.07); border: 1px solid rgba(197,160,89,0.25); }
-        .alert-box.success { background: rgba(46,139,87,0.06); border: 1px solid rgba(46,139,87,0.2); }
-        .ab-icon { font-size: 18px; flex-shrink: 0; }
         .ab-text { font-size: 13px; line-height: 1.65; }
-        .ab-text strong { font-weight: 800; }
-
-        /* ── CASE QUOTE ── */
-        .case-box {
-            background: var(--dark); border-radius: 10px;
-            padding: 24px 22px; margin-bottom: 20px;
-        }
-        .case-box-label { font-size: 10px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-        .case-box-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 18px; }
-        .cbs-item { text-align: center; }
-        .cbs-val { font-size: 20px; font-weight: 900; color: var(--gold); }
-        .cbs-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; line-height: 1.4; }
-        .case-quote-text {
-            font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75;
-            border-left: 3px solid var(--gold); padding-left: 14px; font-style: italic;
-        }
-        .case-attr { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 10px; }
 
         /* ── FAQ ── */
         .faq-list { display: flex; flex-direction: column; gap: 8px; }
         .faq-item { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-        .faq-q {
-            padding: 15px 18px; cursor: pointer;
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-            transition: background 0.15s;
-        }
-        .faq-q:hover { background: var(--gold-bg); }
-        .faq-q-wrap { display: flex; align-items: center; gap: 10px; }
-        .faq-cat { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; color: var(--gold); background: rgba(197,160,89,0.12); border-radius: 4px; padding: 3px 7px; white-space: nowrap; }
-        .faq-q-text { font-size: 13px; font-weight: 700; color: var(--text); word-break: keep-all; }
-        .faq-icon { font-size: 18px; color: var(--gold); font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
-        .faq-a { display: none; padding: 0 18px 16px; font-size: 13px; color: var(--text-sub); line-height: 1.75; border-top: 1px solid var(--border-light); padding-top: 14px; }
+        .faq-q { padding: 15px 18px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+        .faq-cat { font-size: 10px; font-weight: 800; color: var(--gold); background: rgba(197,160,89,0.12); padding: 3px 7px; border-radius: 4px; margin-right: 10px; }
+        .faq-q-text { font-size: 13px; font-weight: 700; }
+        .faq-a { display: none; padding: 14px 18px; font-size: 13px; color: var(--text-sub); border-top: 1px solid var(--border-light); }
         .faq-item.open .faq-a { display: block; }
-        .faq-item.open .faq-icon { transform: rotate(45deg); }
-        .faq-item.open .faq-q { background: var(--gold-bg); }
-
-        /* ── FORM ── */
-        .form-section { background: var(--dark); padding: 40px 28px; }
-        .form-section-label { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-        .form-section h2 { font-size: 22px; font-weight: 900; color: #fff; line-height: 1.35; margin-bottom: 8px; word-break: keep-all; }
-        .form-section p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; }
-        .form-row { margin-bottom: 12px; }
-        .form-row label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); display: block; margin-bottom: 6px; }
-        .form-row input, .form-row select {
-            width: 100%; padding: 13px 15px;
-            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 8px; color: #fff; font-size: 14px;
-            font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em;
-        }
-        .form-row input::placeholder { color: rgba(255,255,255,0.25); }
-        .form-row select option { background: #1A1A1A; color: #fff; }
-        .btn-submit {
-            width: 100%; padding: 17px; margin-top: 6px;
-            background: var(--gold); color: #fff;
-            font-size: 15px; font-weight: 900; border-radius: 10px;
-            border: none; cursor: pointer; font-family: 'Pretendard', sans-serif;
-            letter-spacing: -0.02em; transition: all 0.2s;
-        }
-        .btn-submit:hover { background: #b08e4a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(197,160,89,0.3); }
-        .btn-kakao-form {
-            width: 100%; padding: 15px; margin-top: 10px;
-            background: var(--kakao); color: #3C1E1E;
-            font-size: 14px; font-weight: 800; border-radius: 10px;
-            border: none; cursor: pointer; font-family: 'Pretendard', sans-serif;
-            text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .form-guarantee { font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; margin-top: 12px; line-height: 1.6; }
-
-        /* ── LAYER DIAGRAM ── */
-        .layer-flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
-        .layer-item {
-            border: 1px solid var(--border);
-            border-radius: 10px; padding: 18px 20px;
-            position: relative;
-        }
-        .layer-arrow-down {
-            text-align: center; font-size: 18px; color: var(--gold);
-            padding: 6px 0; font-weight: 900; line-height: 1;
-        }
-        .layer-num-badge {
-            display: inline-block; font-size: 10px; font-weight: 900;
-            letter-spacing: 1.5px; color: var(--gold);
-            background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3);
-            border-radius: 4px; padding: 3px 8px; margin-bottom: 8px;
-        }
-        .layer-title { font-size: 15px; font-weight: 900; margin-bottom: 4px; }
-        .layer-role { font-size: 12px; color: var(--text-sub); margin-bottom: 5px; }
-        .layer-effect { font-size: 12px; color: var(--gold); font-weight: 700; }
-
-        /* ── WIN-WIN TABLE ── */
-        .ww-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
-        .ww-table th { padding: 10px 12px; background: var(--dark); color: var(--gold); font-size: 11px; text-align: center; }
-        .ww-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-light); text-align: center; color: var(--text-sub); vertical-align: middle; }
-        .ww-table td:first-child { font-weight: 800; color: var(--text); text-align: left; }
-        .ww-table td.key { color: var(--dark); font-weight: 700; }
-        .ww-table tr:hover td { background: var(--gold-bg); }
-
-        /* ── DIVIDER ── */
-        .divider { height: 1px; background: var(--border-light); margin: 24px 0; }
-        .divider-gold { height: 2px; background: linear-gradient(to right, var(--gold), transparent); margin: 0 0 24px; }
-
-        /* ── INLINE NOTE ── */
-        .note { font-size: 11px; color: var(--text-light); font-style: italic; margin-top: 8px; line-height: 1.6; }
-
-        /* ── FOOTER ── */
-        .report-footer {
-            background: var(--dark2); padding: 28px 28px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-        .rf-brand { font-size: 13px; font-weight: 900; color: var(--gold); }
-        .rf-info { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.7; text-align: right; }
-
-        /* ── PAGE INDICATOR ── */
-        .page-ind {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 8px 28px;
-            background: var(--gold-bg); border-bottom: 1px solid var(--border);
-            font-size: 11px; color: var(--text-light);
-        }
-        .page-ind strong { color: var(--gold); }
-
-        /* ── BADGE STRIP ── */
-        .badge-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .badge {
-            font-size: 12px; font-weight: 700;
-            border-radius: 6px; padding: 6px 12px;
-        }
-        .badge.green { background: rgba(46,139,87,0.1); color: var(--green); border: 1px solid rgba(46,139,87,0.25); }
-        .badge.gold { background: rgba(197,160,89,0.1); color: var(--gold); border: 1px solid rgba(197,160,89,0.25); }
-        .badge.red { background: rgba(217,64,64,0.08); color: var(--red); border: 1px solid rgba(217,64,64,0.2); }
-
-        /* ── INLINE CTA ── */
-        .inline-cta {
-            background: linear-gradient(135deg, var(--dark), #2a2a3a);
-            border-radius: 12px; padding: 22px 22px;
-            display: flex; align-items: center; justify-content: space-between; gap: 16px;
-            margin: 28px 0; flex-wrap: wrap;
-        }
-        .inline-cta p { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.4; word-break: keep-all; }
-        .inline-cta a {
-            background: var(--gold); color: #fff;
-            font-size: 13px; font-weight: 800; border-radius: 8px;
-            padding: 12px 20px; text-decoration: none; white-space: nowrap;
-            transition: all 0.15s; flex-shrink: 0;
-        }
-        .inline-cta a:hover { background: #b08e4a; }
 
         /* ── SIMULATOR ── */
         .sim-wrap { background: var(--gold-bg); border: 1px solid var(--border); border-radius: 10px; padding: 24px 20px; margin-bottom: 20px; }
-        .sim-slider-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-        .sim-slider-label { font-size: 12px; font-weight: 700; color: var(--text-sub); white-space: nowrap; }
-        .sim-slider-val { font-size: 20px; font-weight: 900; color: var(--gold); min-width: 80px; text-align: right; }
-        .range-slider {
-            flex: 1; height: 5px; -webkit-appearance: none; appearance: none;
-            background: linear-gradient(to right, var(--gold), var(--gold)) no-repeat;
-            background-size: 60% 100%;
-            background-color: var(--border); border-radius: 3px; cursor: pointer;
-        }
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 20px; height: 20px;
-            border-radius: 50%; background: var(--gold);
-            box-shadow: 0 2px 8px rgba(197,160,89,0.4); cursor: pointer;
-        }
-        .sim-results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-        .sim-res-item { text-align: center; background: #fff; border-radius: 8px; padding: 14px 10px; border: 1px solid var(--border); }
-        .sim-res-label { font-size: 10px; color: var(--text-light); margin-bottom: 6px; line-height: 1.4; }
+        .range-slider { width: 100%; height: 5px; -webkit-appearance: none; background: var(--border); border-radius: 3px; cursor: pointer; }
+        .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .sim-results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 15px 0; }
+        .sim-res-item { text-align: center; background: #fff; padding: 14px 10px; border: 1px solid var(--border); border-radius: 8px; }
         .sim-res-val { font-size: 16px; font-weight: 900; }
-        .sim-res-val.red { color: var(--red); }
-        .sim-res-val.green { color: var(--green); }
-        .sim-res-val.gold { color: var(--gold); }
-        .sim-highlight-row {
-            background: var(--dark); border-radius: 8px; padding: 16px 18px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .sh-label { font-size: 12px; color: rgba(255,255,255,0.5); }
-        .sh-val { font-size: 22px; font-weight: 900; color: var(--gold); }
-        .sh-5y { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
 
-        /* ── GROWTH TABLE highlight ── */
-        .growth-bep { background: rgba(197,160,89,0.1) !important; }
-        .growth-bep td { color: var(--gold) !important; font-weight: 800 !important; }
+        /* ── FORM SECTION ── */
+        .form-section { background: var(--dark); padding: 40px 28px; }
+        .form-section h2 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+        .form-section p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+        .form-row { margin-bottom: 12px; }
+        .form-row label { font-size: 12px; color: rgba(255,255,255,0.55); display: block; margin-bottom: 6px; }
+        .form-row input, .form-row select { width: 100%; padding: 13px 15px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 14px; }
+        .btn-submit { width: 100%; padding: 17px; background: var(--gold); color: #fff; font-size: 15px; font-weight: 900; border: none; border-radius: 10px; cursor: pointer; transition: 0.2s; }
+        .btn-submit:hover { background: #b08e4a; }
+        .btn-submit:disabled { background: #555; cursor: not-allowed; }
+        .report-footer { background: var(--dark2); padding: 28px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.3); font-size: 11px; }
 
-        /* ── SIM TABLE active row ── */
-        .report-table tbody tr.sim-active {
-            background: rgba(197,160,89,0.13) !important;
-            outline: 2px solid var(--gold);
-            outline-offset: -1px;
-            position: relative;
-        }
-        .report-table tbody tr.sim-active td {
-            color: var(--dark) !important;
-            font-weight: 800 !important;
-        }
-        .report-table tbody tr.sim-active td.val-red { color: var(--red) !important; }
-        .report-table tbody tr.sim-active td.val-green { color: var(--green) !important; }
-        .report-table tbody tr.sim-active td.val-gold { color: var(--gold) !important; }
-
-        /* ════════════════════════════════
-           MOBILE FIRST — 480px 이하
-        ════════════════════════════════ */
         @media (max-width: 480px) {
-
-            /* ── COVER CTA ── */
-            .cover-cta-block { padding: 24px 0 0; }
-            .btn-cover-primary { font-size: 15px; padding: 17px 20px; border-radius: 12px; }
-            .btn-cover-primary small { font-size: 11px; }
-            .btn-cover-kakao { font-size: 14px; padding: 15px 20px; border-radius: 12px; min-height: 52px; }
-
-            /* ── FLOAT BTN ── */
-            .float-kakao {
-                bottom: 16px; right: 12px;
-                padding: 12px 16px; font-size: 12px;
-            }
-
-            /* ── TOP BAR ── */
-            .top-bar { padding: 9px 16px; gap: 8px; }
-            .top-bar-text { font-size: 11px; }
-            .top-bar-cta { padding: 5px 10px; font-size: 10px; }
-
-            /* ── COVER ── */
-            .cover { padding: 36px 20px 40px; }
             .cover-title { font-size: 34px; }
-            .cover-subtitle { font-size: 14px; margin-bottom: 32px; }
-
-            /* 커버 메타: 가로 → 세로 */
-            .cover-meta {
-                flex-direction: column;
-                gap: 0;
-                padding-top: 20px;
-            }
-            .cover-meta-item {
-                padding-right: 0;
-                padding-bottom: 14px;
-                margin-bottom: 14px;
-                border-right: none !important;
-                margin-right: 0 !important;
-                border-bottom: 1px solid rgba(255,255,255,0.08);
-                display: flex; align-items: center; gap: 16px;
-            }
-            .cover-meta-item:last-child {
-                border-bottom: none;
-                padding-bottom: 0; margin-bottom: 0;
-            }
-            .cm-label { margin-bottom: 3px; }
-            .cm-val { font-size: 20px; }
-
-            /* TOC */
-            .toc-grid { grid-template-columns: 1fr; gap: 6px; }
-            .toc-item { padding: 10px 12px; }
-
-            /* ── PAGE INDICATOR ── */
-            .page-ind {
-                padding: 7px 16px;
-                font-size: 10px;
-            }
-            .page-ind span:last-child { display: none; }
-
-            /* ── STEP HEADER ── */
-            .step-header { padding: 14px 16px 12px; gap: 10px; }
-            .step-header-title { font-size: 17px; }
-            .step-header-sub { font-size: 11px; }
-
-            /* ── STEP BODY ── */
-            .step-body { padding: 20px 16px 24px; }
-            .sec-label { font-size: 10px; margin-top: 22px; }
-
-            /* ── KPI GRID: 4열 → 2x2 ── */
-            .kpi-grid { grid-template-columns: repeat(2,1fr); }
-            .kpi-item:nth-child(2) { border-right: none; }
-            .kpi-item:nth-child(3) { border-top: 1px solid var(--border); }
-            .kpi-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
-            .kpi-val { font-size: 18px; }
-            .kpi-lbl { font-size: 10px; }
-
-            /* ── TABLES: 가로 스크롤 ── */
-            .report-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                font-size: 12px;
-                margin-left: -16px;
-                margin-right: -16px;
-                width: calc(100% + 32px);
-            }
-            .report-table thead th { padding: 9px 10px; font-size: 11px; }
-            .report-table tbody td { padding: 9px 10px; }
-
-            /* ── WIN-WIN TABLE ── */
-            .ww-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin-left: -16px;
-                margin-right: -16px;
-                width: calc(100% + 32px);
-            }
-            .ww-table th, .ww-table td { padding: 9px 10px; font-size: 11px; white-space: nowrap; }
-
-            /* ── SIMULATOR ── */
-            .sim-wrap { padding: 18px 14px; }
-            .sim-slider-row { gap: 10px; }
-            .sim-slider-label { font-size: 11px; }
-            .sim-slider-val { font-size: 18px; min-width: 60px; }
-            .range-slider::-webkit-slider-thumb { width: 24px; height: 24px; }
-
-            /* 시뮬레이터 결과: 3열 → 3열 유지하되 폰트 축소 */
-            .sim-results-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
-            .sim-res-item { padding: 10px 6px; }
-            .sim-res-label { font-size: 9px; }
-            .sim-res-val { font-size: 13px; }
-
-            /* 시뮬레이터 하이라이트: 가로 → 세로 */
-            .sim-highlight-row {
-                flex-direction: column;
-                gap: 14px;
-                padding: 16px 14px;
-            }
-            .sim-highlight-row a {
-                width: 100%; text-align: center;
-                padding: 14px; font-size: 13px;
-                border-radius: 8px;
-            }
-            .sh-val { font-size: 20px; }
-
-            /* ── CASE BOX ── */
-            .case-box { padding: 20px 16px; }
-            .case-box-stats {
-                grid-template-columns: repeat(3,1fr);
-                gap: 8px;
-            }
-            .cbs-val { font-size: 16px; }
-            .cbs-lbl { font-size: 10px; }
-
-            /* ── INLINE CTA: 가로 → 세로 ── */
-            .inline-cta {
-                flex-direction: column;
-                gap: 14px;
-                padding: 22px 20px !important;
-                text-align: center;
-            }
-            .inline-cta a {
-                width: 100%; text-align: center;
-                padding: 14px 20px; font-size: 14px;
-            }
-
-            /* ── CHECK LIST ── */
-            .check-item { padding: 12px 14px; gap: 10px; }
-            .check-text h5 { font-size: 12px; }
-            .check-text p { font-size: 11px; }
-
-            /* ── LAYER FLOW ── */
-            .layer-item { padding: 14px 16px; }
-            .layer-title { font-size: 14px; }
-            .layer-role { font-size: 11px; }
-            .layer-effect { font-size: 11px; }
-
-            /* ── STEP FLOW (로드맵) ── */
-            .step-flow::before { left: 17px; }
-            .sf-dot { width: 34px; height: 34px; font-size: 11px; }
-            .sf-title { font-size: 14px; }
-            .sf-items { font-size: 11px; }
-
-            /* ── ALERT BOX ── */
-            .alert-box { padding: 13px 14px; gap: 10px; }
-            .ab-text { font-size: 12px; }
-
-            /* ── FAQ ── */
-            .faq-q {
-                padding: 14px 16px;
-                min-height: 52px; /* 터치 타깃 확보 */
-            }
-            .faq-q-wrap { gap: 7px; }
-            .faq-cat { font-size: 9px; padding: 2px 6px; white-space: nowrap; }
-            .faq-q-text { font-size: 12px; }
-            .faq-icon { font-size: 20px; min-width: 20px; }
-            .faq-a { font-size: 12px; padding: 13px 16px 14px; }
-
-            /* ── BADGE STRIP ── */
-            .badge { font-size: 11px; padding: 6px 10px; }
-
-            /* ── FORM ── */
-            .form-section { padding: 32px 20px 36px; }
-            .form-section h2 { font-size: 20px; }
-            .form-section p { font-size: 12px; line-height: 1.75; }
-            .form-row input, .form-row select {
-                padding: 14px 13px;
-                font-size: 16px; /* iOS 줌 방지: 16px 이상 필수 */
-            }
-            .btn-submit {
-                padding: 18px;
-                font-size: 15px;
-                min-height: 56px; /* 터치 타깃 */
-            }
-            .btn-kakao-form {
-                padding: 16px;
-                font-size: 14px;
-                min-height: 52px;
-            }
-            .form-guarantee { font-size: 10px; }
-
-            /* ── FOOTER: 가로 → 세로 ── */
-            .report-footer {
-                flex-direction: column;
-                gap: 14px;
-                text-align: center;
-                padding: 24px 20px;
-            }
-            .rf-info { text-align: center; font-size: 11px; }
-
-            /* ── NOTE ── */
-            .note { font-size: 10px; }
-        }
-
-        /* ── 375px 이하 초소형 대응 ── */
-        @media (max-width: 375px) {
-            .cover-title { font-size: 28px; }
-            .cover { padding: 28px 16px 32px; }
-            .step-body { padding: 18px 14px 20px; }
-            .kpi-val { font-size: 16px; }
-            .sim-res-val { font-size: 12px; }
-            .cbs-val { font-size: 14px; }
-            .case-box-stats { gap: 4px; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .sim-results-grid { grid-template-columns: 1fr; }
+            .report-footer { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-<a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="float-kakao" id="floatKakao">
-    💬 카카오 무료 상담
-</a>
+<a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="float-kakao" id="floatKakao">💬 카카오 무료 상담</a>
 
 <div class="page">
-
-    <!-- TOP BAR -->
     <div class="top-bar">
-        <div class="top-bar-text">
-            <span class="pulse"></span>
-            3월 무료 진단 <strong>잔여 3팀</strong> · 신청 후 24시간 내 연락
-        </div>
+        <div class="top-bar-text"><span class="pulse"></span>3월 무료 진단 <strong>잔여 3팀</strong></div>
         <a href="#apply" class="top-bar-cta">무료 진단 →</a>
     </div>
 
-    <!-- COVER -->
     <div class="cover">
         <div class="cover-firm">USP Company</div>
         <div class="cover-title">병원 경영<br><span>통합 솔루션</span><br>보고서</div>
         <div class="cover-subtitle">세금 방어 · 인건비 최적화 · 자산 승계 완전 설계</div>
         <div class="cover-meta">
-            <div class="cover-meta-item">
-                <div class="cm-label">대상</div>
-                <div class="cm-val">연 순수익<br>2억 이상</div>
-                <div class="cm-sub">개인사업자 원장님</div>
-            </div>
-            <div class="cover-meta-item">
-                <div class="cm-label">적용 실적</div>
-                <div class="cm-val">47개+</div>
-                <div class="cm-sub">병원 · 세무조사 0건</div>
-            </div>
-            <div class="cover-meta-item">
-                <div class="cm-label">누적 절세</div>
-                <div class="cm-val">138억</div>
-                <div class="cm-sub">2019~2025</div>
-            </div>
+            <div class="cover-meta-item"><div class="cm-label">대상</div><div class="cm-val">연 순수익 2억 이상</div></div>
+            <div class="cover-meta-item"><div class="cm-label">누적 절세</div><div class="cm-val">138억</div></div>
         </div>
-        <!-- ── COVER CTA ── -->
-        <div class="cover-cta-block">
-            <a href="#apply" class="btn-cover-primary">
-                📊 무료 병원 경영 진단 신청
-                <small>절세 + 인건비 + 승계 시뮬레이션 제공</small>
-            </a>
-            <a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="btn-cover-kakao">
-                💬 카카오톡 무료 상담
-            </a>
-            <p class="cover-cta-disclaimer">※ 초기 진단 및 시뮬레이션 보고서 무료 제공 | 통상 300만 원 상당</p>
-        </div>
-        <div class="cover-toc" style="margin-top:36px;">
-            <div class="cover-toc-title">보고서 구성</div>
-            <div class="toc-grid">
-                <a href="#step01" class="toc-item"><span class="toc-num">01</span><span class="toc-text">경영 진단 대시보드</span></a>
-                <a href="#step02" class="toc-item"><span class="toc-num">02</span><span class="toc-text">절세 시뮬레이션</span></a>
-                <a href="#step03" class="toc-item"><span class="toc-num">03</span><span class="toc-text">MSO 구조 설계</span></a>
-                <a href="#step04" class="toc-item"><span class="toc-num">04</span><span class="toc-text">성과급 시스템</span></a>
-                <a href="#step05" class="toc-item"><span class="toc-num">05</span><span class="toc-text">성장 시나리오 ROI</span></a>
-                <a href="#step06" class="toc-item"><span class="toc-num">06</span><span class="toc-text">4-Layer 자산 승계</span></a>
-                <a href="#step07" class="toc-item"><span class="toc-num">07</span><span class="toc-text">3중 방어 체크리스트</span></a>
-                <a href="#step08" class="toc-item"><span class="toc-num">08</span><span class="toc-text">12개월 로드맵</span></a>
-                <a href="#step09" class="toc-item"><span class="toc-num">09</span><span class="toc-text">케이스</span></a>
-                <a href="#step10" class="toc-item"><span class="toc-num">10</span><span class="toc-text">FAQ · 무료 진단 신청</span></a>
-            </div>
+        <div style="margin-top:40px;">
+            <a href="#apply" class="btn-cover-primary">📊 무료 병원 경영 진단 신청<small>절세 + 인건비 + 승계 시뮬레이션 제공</small></a>
         </div>
     </div>
 
-    <!-- ── STEP 01 ── -->
-    <div class="step-section" id="step01">
-        <div class="page-ind"><span><strong>STEP 01</strong> · 경영 진단 대시보드</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div>
-                <div class="step-badge">STEP 01</div>
-            </div>
-            <div>
-                <div class="step-header-title">경영 진단 대시보드</div>
-                <div class="step-header-sub">지금 원장님 병원에서 새고 있는 돈을 한눈에 요약합니다.</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="sec-label">핵심 KPI — 연 순수익 5억 기준</div>
-            <div class="kpi-grid">
-                <div class="kpi-item">
-                    <div class="kpi-val" style="color:var(--red)">49.5%</div>
-                    <div class="kpi-lbl">현재 최고<br>소득세율</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-val">16~22%</div>
-                    <div class="kpi-lbl">MSO 구조<br>실효세율</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-val">8,840만</div>
-                    <div class="kpi-lbl">연간<br>절세 효과</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-val" style="color:var(--red)">5.4억</div>
-                    <div class="kpi-lbl">NET 계약<br>연간 숨은 손실</div>
-                </div>
-            </div>
-
-            <div class="sec-label">구조 전환 전·후 비교 (순수익 5억 기준)</div>
-            <table class="report-table">
-                <thead>
-                    <tr>
-                        <th>비교 항목</th>
-                        <th>단독 개인사업자 (Before)</th>
-                        <th>MSO 구조 (After)</th>
-                        <th>절감 효과</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>적용 세율</td>
-                        <td class="val-red">49.5%</td>
-                        <td class="val-green">9~19%</td>
-                        <td class="val-gold">최대 40.5%p ↓</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>세금 납부액 (연간)</td>
-                        <td class="val-red">1억 8,370만 원</td>
-                        <td class="val-green">9,530만 원</td>
-                        <td class="val-gold">8,840만 원 절세</td>
-                    </tr>
-                    <tr>
-                        <td>자산 이전 세금</td>
-                        <td class="val-red">최고 50% 증여세</td>
-                        <td class="val-green">0원 (구조 완성 시)</td>
-                        <td>100% 절감</td>
-                    </tr>
-                    <tr>
-                        <td>NET 계약 손실</td>
-                        <td class="val-red">닥터 1인 연 1,500만+</td>
-                        <td class="val-green">GROSS 전환 시 0원</td>
-                        <td>리스크 원천 제거</td>
-                    </tr>
-                    <tr>
-                        <td>세무조사 리스크</td>
-                        <td class="val-red">단독 구조 고위험군</td>
-                        <td class="val-green">거버넌스 완성 시 0건</td>
-                        <td>완전 방어</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="sec-label">10년 누적 재무 임팩트 분석 (순수익 5억 기준)</div>
-            <table class="report-table">
-                <thead>
-                    <tr>
-                        <th>구분</th>
-                        <th>1년차</th>
-                        <th>5년차</th>
-                        <th>10년차</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>절세 누적액</td>
-                        <td>8,840만</td>
-                        <td>4.42억</td>
-                        <td>8.84억</td>
-                    </tr>
-                    <tr>
-                        <td>증여세 절감 (4-Layer)</td>
-                        <td>—</td>
-                        <td>3억~5억</td>
-                        <td>10억~15억</td>
-                    </tr>
-                    <tr>
-                        <td>복지기금 절세</td>
-                        <td>2,475만</td>
-                        <td>1.24억</td>
-                        <td>2.48억</td>
-                    </tr>
-                    <tr>
-                        <td>GROSS 전환 절감 (3명)</td>
-                        <td>4,500만</td>
-                        <td>2.25억</td>
-                        <td>4.5억</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>★ 총 누적 효과</td>
-                        <td>1.58억</td>
-                        <td>10.4억</td>
-                        <td>25.8억+</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="note">※ MSO 벤처 인증 + 소득공제 적용 기준. 개인 상황에 따라 변동 가능.</p>
-        </div>
-    </div>
-
-    <!-- ── STEP 02 ── -->
     <div class="step-section" id="step02">
-        <div class="page-ind"><span><strong>STEP 02</strong> · 절세 시뮬레이션</span><span>USP Company · 경영전략팀</span></div>
         <div class="step-header">
-            <div><div class="step-badge">STEP 02</div></div>
-            <div>
-                <div class="step-header-title">절세 시뮬레이션</div>
-                <div class="step-header-sub">순수익 구간별 정밀 시뮬레이션 (2026년 세율 기준)</div>
-            </div>
+            <div class="step-badge">STEP 02</div>
+            <div class="step-header-title">절세 시뮬레이션</div>
         </div>
         <div class="step-body">
-            <div class="sec-label">슬라이더로 직접 확인하세요</div>
             <div class="sim-wrap">
-                <div class="sim-slider-row">
-                    <span class="sim-slider-label">연 순수익</span>
-                    <input type="range" class="range-slider" id="simSlider" min="0" max="6" value="4" step="1" style="flex:1">
-                    <span class="sim-slider-val" id="simDisplay">10억</span>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span style="font-size:12px; font-weight:700;">연 순수익</span>
+                    <span id="simDisplay" style="color:var(--gold); font-weight:900;">10억</span>
                 </div>
+                <input type="range" class="range-slider" id="simSlider" min="0" max="6" value="4" step="1">
                 <div class="sim-results-grid">
-                    <div class="sim-res-item">
-                        <div class="sim-res-label">현재 납부<br>세액</div>
-                        <div class="sim-res-val red" id="simBefore">4억 700만</div>
-                    </div>
-                    <div class="sim-res-item">
-                        <div class="sim-res-label">구조 적용 후<br>세액</div>
-                        <div class="sim-res-val green" id="simAfter">1억 8,800만</div>
-                    </div>
-                    <div class="sim-res-item">
-                        <div class="sim-res-label">절세율</div>
-                        <div class="sim-res-val gold" id="simRate">53.4%</div>
-                    </div>
-                </div>
-                <div class="sim-highlight-row">
-                    <div>
-                        <div class="sh-label">연간 절세액</div>
-                        <div class="sh-val" id="simSave">2억 4,400만 원</div>
-                        <div class="sh-5y">10년 누적 절세 <strong id="simCumul" style="color:var(--gold-light)">24.4억 원</strong></div>
-                    </div>
-                    <a href="#apply" style="background:var(--gold);color:#fff;font-size:12px;font-weight:800;padding:10px 16px;border-radius:7px;text-decoration:none;">무료 진단 →</a>
+                    <div class="sim-res-item"><div style="font-size:10px; color:#888;">현재 세액</div><div class="sim-res-val red" id="simBefore">4억 3,200만</div></div>
+                    <div class="sim-res-item"><div style="font-size:10px; color:#888;">구조 후 세액</div><div class="sim-res-val green" id="simAfter">1억 8,800만</div></div>
+                    <div class="sim-res-item"><div style="font-size:10px; color:#888;">연간 절세액</div><div class="sim-res-val gold" id="simSave">2억 4,400만</div></div>
                 </div>
             </div>
-
-            <div class="sec-label">구간별 정밀 시뮬레이션 표</div>
-            <table class="report-table" id="simTable">
-                <thead>
-                    <tr>
-                        <th>연 순수익</th>
-                        <th>현재 세금</th>
-                        <th>MSO 구조 후</th>
-                        <th>연간 절세액</th>
-                        <th>절세율</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="simRow0"><td>2억</td><td class="val-red">6,840만</td><td class="val-green">3,600만</td><td class="val-gold">3,240만</td><td>47.4%</td></tr>
-                    <tr id="simRow1"><td>3억</td><td class="val-red">1억 1,400만</td><td class="val-green">5,800만</td><td class="val-gold">5,600만</td><td>49.1%</td></tr>
-                    <tr id="simRow2"><td>5억</td><td class="val-red">1억 8,400만</td><td class="val-green">9,530만</td><td class="val-gold">8,870만</td><td>48.2%</td></tr>
-                    <tr id="simRow3"><td>7억</td><td class="val-red">2억 8,300만</td><td class="val-green">1억 3,200만</td><td class="val-gold">1억 5,100만</td><td>53.4%</td></tr>
-                    <tr id="simRow4"><td>10억</td><td class="val-red">4억 3,200만</td><td class="val-green">1억 8,800만</td><td class="val-gold">2억 4,400만</td><td>56.5%</td></tr>
-                    <tr id="simRow5"><td>15억</td><td class="val-red">6억 8,000만</td><td class="val-green">2억 8,500만</td><td class="val-gold">3억 9,500만</td><td>58.1%</td></tr>
-                    <tr id="simRow6"><td>20억</td><td class="val-red">9억 2,700만</td><td class="val-green">3억 8,000만</td><td class="val-gold">5억 4,700만</td><td>59.0%</td></tr>
-                </tbody>
-            </table>
-            <p class="note">※ MSO 벤처인증 + 소득공제 적용 기준. 벤처 최초 인증 후 5년간 법인세 50% 감면.</p>
-        </div>
-    </div>
-
-    <!-- ── STEP 03 ── -->
-    <div class="step-section" id="step03">
-        <div class="page-ind"><span><strong>STEP 03</strong> · MSO 구조 설계</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 03</div></div>
-            <div>
-                <div class="step-header-title">MSO 구조 설계</div>
-                <div class="step-header-sub">수익 분산 3단계 + 실체 요건 체크리스트</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="sec-label">수익 분산 구조 3단계</div>
             <table class="report-table">
-                <thead>
-                    <tr><th>단계</th><th>구분</th><th>설명</th><th>핵심 효과</th></tr>
-                </thead>
+                <thead><tr><th>구간</th><th>현재 세금</th><th>절세 효과</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td class="val-gold">01</td>
-                        <td>수익 분산</td>
-                        <td>병원 → MSO에 경영지원 수수료 지급. 병원 과세소득 감소</td>
-                        <td class="val-gold">49.5% → 9~19%</td>
-                    </tr>
-                    <tr>
-                        <td class="val-gold">02</td>
-                        <td>실체 법인 운영</td>
-                        <td>독립 사무공간, 전담직원, 연구노트, B2B 거래 분산</td>
-                        <td>부당행위 부인 방어</td>
-                    </tr>
-                    <tr>
-                        <td class="val-gold">03</td>
-                        <td>특수관계인 관리</td>
-                        <td>본인 병원 매출 비중 30% 미만 유지. B2B 스와핑 적용</td>
-                        <td>일감 몰아주기 차단</td>
-                    </tr>
+                    <tr id="simRow4" class="highlight"><td>10억 구간</td><td class="val-red">4.32억</td><td class="val-gold">2.44억 절세</td></tr>
                 </tbody>
             </table>
-
-            <div class="sec-label">MSO 설립 전 실체 요건 체크리스트</div>
-            <div class="check-list">
-                <div class="check-item pass">
-                    <span class="check-icon">✅</span>
-                    <div class="check-text">
-                        <h5>물리적 공간 — 독립 사무실 확보</h5>
-                        <p>병원과 독립된 주소 및 사무실. 공유오피스 가능. 증빙: 임대차 계약서, 명판 사진</p>
-                    </div>
-                </div>
-                <div class="check-item pass">
-                    <span class="check-icon">✅</span>
-                    <div class="check-text">
-                        <h5>전담 직원 — 4대보험 가입 필수</h5>
-                        <p>MSO 전담 인력 최소 1명 채용. 증빙: 4대보험 가입증명서, 급여 이체 내역</p>
-                    </div>
-                </div>
-                <div class="check-item pass">
-                    <span class="check-icon">✅</span>
-                    <div class="check-text">
-                        <h5>SLA 계약서 — 경영위탁계약 체결</h5>
-                        <p>병원과의 용역 범위·수수료 산정 기준 명시. 시장 표준 수수료 근거 문서화</p>
-                    </div>
-                </div>
-                <div class="check-item pass">
-                    <span class="check-icon">✅</span>
-                    <div class="check-text">
-                        <h5>제3자 거래 입증 — 타 병원 실거래</h5>
-                        <p>다수 병원 B2B 거래 실적. 본인 병원 매출 비중 30% 미만 유지</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="alert-box warning">
-                <span class="ab-icon">⚠️</span>
-                <div class="ab-text"><strong>주의:</strong> 위 4가지 실체 요건을 갖추지 않은 MSO는 국세청으로부터 '페이퍼 컴퍼니'로 판단되어 모든 비용 처리가 부인될 수 있습니다. USP는 설립 단계부터 전 증빙을 완비하여 설계합니다.</div>
-            </div>
-
-            <div class="sec-label">벤처인증 — 법인세 50% 추가 감면</div>
-            <table class="report-table">
-                <thead>
-                    <tr><th>법인 과세소득</th><th>일반 법인세</th><th>벤처 감면 후</th><th>연간 절감액</th><th>5년 누적</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>1억</td><td>900만</td><td class="val-gold">450만</td><td>450만</td><td>2,250만</td></tr>
-                    <tr><td>2억</td><td>3,800만</td><td class="val-gold">1,900만</td><td>1,900만</td><td>9,500만</td></tr>
-                    <tr class="highlight"><td>5억</td><td>1억 500만</td><td class="val-gold">5,250만</td><td>5,250만</td><td>2억 6,250만</td></tr>
-                </tbody>
-            </table>
-            <p class="note">※ 개인투자조합 패스트트랙: 기술 심사 불필요, 수 주 내 인증 완료. 조세특례제한법 100% 합법.</p>
         </div>
     </div>
 
-    <!-- INLINE CTA -->
-    <div class="inline-cta" style="margin:0; border-radius:0; padding: 24px 28px;">
-        <p>지금까지 내용이 우리 병원에<br>해당되는지 무료로 확인하세요</p>
-        <a href="#apply">무료 절세 진단 →</a>
-    </div>
-
-    <!-- ── STEP 04 ── -->
-    <div class="step-section" id="step04">
-        <div class="page-ind"><span><strong>STEP 04</strong> · 성과급 시스템</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 04</div></div>
-            <div>
-                <div class="step-header-title">성과급 시스템</div>
-                <div class="step-header-sub">인건비를 자동 성장 엔진으로 — NET 계약의 4가지 구조적 손실 해결</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="sec-label">NET 계약 유지 시 연간 숨은 손실</div>
-            <table class="report-table">
-                <thead>
-                    <tr><th>손실 유형</th><th>내용</th><th>연간 손실 추정</th></tr>
-                </thead>
-                <tbody>
-                    <tr class="danger">
-                        <td>① 성과 동기 없음</td>
-                        <td>수술 10건 추가해도 통장 동일 → 매출 정체 구조화</td>
-                        <td class="val-red">기회비용 무한</td>
-                    </tr>
-                    <tr class="danger">
-                        <td>② 우수 인력 이탈</td>
-                        <td>ROI 9.7배 핵심 닥터도 이직 장벽 없음</td>
-                        <td class="val-red">2억 원+</td>
-                    </tr>
-                    <tr class="danger">
-                        <td>③ 세무 리스크</td>
-                        <td>실수령→세전 역산 구조로 급여 근거 불명확</td>
-                        <td class="val-red">4,300만 원</td>
-                    </tr>
-                    <tr class="danger">
-                        <td>④ 노무 분쟁</td>
-                        <td>임금명세서 미비 → 퇴직 시 미지급수당 소송</td>
-                        <td class="val-red">2억 원+</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>합계</td>
-                        <td>NET 계약 유지만으로 발생하는 최소 숨은 비용</td>
-                        <td class="val-red">연 5.4억 원+</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="sec-label">성과급 산출 공식</div>
-            <div class="check-list">
-                <div class="check-item pass">
-                    <span class="check-icon">①</span>
-                    <div class="check-text">
-                        <h5>직접기여이익 = 시술별 매출 × (1 − 원가율)</h5>
-                        <p>수술·처치 35%, 주사·시술 25%, 검사·진단 20%, 외래진찰 15%, 비급여·기능 10%, 입원·관리 40%</p>
-                    </div>
-                </div>
-                <div class="check-item pass">
-                    <span class="check-icon">②</span>
-                    <div class="check-text">
-                        <h5>성과급 풀 = 전체 기여이익 합계 × 15%</h5>
-                        <p>기여이익의 85%는 처음부터 병원 몫 — 1차 안전장치</p>
-                    </div>
-                </div>
-                <div class="check-item pass">
-                    <span class="check-icon">③</span>
-                    <div class="check-text">
-                        <h5>★ 실제 성과급 = min(배분액, 기본급 × 150%)</h5>
-                        <p>캡 초과분은 병원 유보금 자동 적립 — 3차 안전장치</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sec-label">성과급 도입 전·후 핵심 KPI</div>
-            <div class="kpi-grid">
-                <div class="kpi-item">
-                    <div class="kpi-val">22.2%</div>
-                    <div class="kpi-lbl">총인건비율<br>(24.3% → ↓)</div>
-                    <div class="kpi-sub">−2.1%p 절감</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-val">5.7배</div>
-                    <div class="kpi-lbl">성과급 ROI<br>(성과급 1원→5.7원)</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-val">+4,424만</div>
-                    <div class="kpi-lbl">인건비 절감<br>(월, 5인 기준)</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-val">110.5억</div>
-                    <div class="kpi-lbl">연간 병원<br>잔여이익</div>
-                </div>
-            </div>
-
-            <div class="sec-label">Win-Win 구조</div>
-            <table class="ww-table">
-                <thead>
-                    <tr><th>구분</th><th>페이닥터 입장</th><th>병원장 입장</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>급여</td><td class="key">실수령 100% 보장</td><td class="key">고정비 변동 없음</td></tr>
-                    <tr><td>동기</td><td>일한 만큼 확실히 더 번다</td><td>원장이 스스로 매출 견인</td></tr>
-                    <tr><td>수익</td><td class="key">월 +2,400~3,500만 가능</td><td class="key">12.4% 성장 시 투자 회수</td></tr>
-                    <tr><td>방어</td><td>부진 시도 기본급 보장</td><td>정체 시 성과급 0원</td></tr>
-                    <tr><td>리스크</td><td>합법적 소득 증빙 완비</td><td>연 5.4억 리스크 제거</td></tr>
-                </tbody>
-            </table>
-            <p class="note">※ 병원장은 이기고 · 원장들은 더 번다 · 리스크는 사라진다</p>
-        </div>
-    </div>
-
-    <!-- ── STEP 05 ── -->
-    <div class="step-section" id="step05">
-        <div class="page-ind"><span><strong>STEP 05</strong> · 성장 시나리오 ROI</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 05</div></div>
-            <div>
-                <div class="step-header-title">성장 시나리오별 병원 ROI</div>
-                <div class="step-header-sub">성과급 도입 후 성장률에 따른 병원 잔여이익 변화</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="alert-box info">
-                <span class="ab-icon">📌</span>
-                <div class="ab-text"><strong>0% = 현상유지</strong>가 아닙니다. 퇴사 인원 매출을 기존 5인이 100% 흡수한 상태가 기준점입니다. 순수 성장분은 50% 할인 미적용 — 원장 동기부여 극대화.</div>
-            </div>
-
-            <table class="report-table">
-                <thead>
-                    <tr><th>성장률</th><th>실제기여이익</th><th>성과급 지급</th><th>병원잔여 (월)</th><th>연간 병원잔여</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>0% (현상유지)</td><td>11.84억</td><td>1.49억</td><td>9.21억</td><td>110.5억</td></tr>
-                    <tr><td>5%</td><td>12.43억</td><td>1.53억</td><td>9.76억</td><td>117.1억</td></tr>
-                    <tr><td>10%</td><td>13.02억</td><td>1.55억</td><td>10.33억</td><td>124.0억</td></tr>
-                    <tr class="growth-bep highlight"><td>⭐ 12.4% BEP</td><td>13.31억</td><td>1.56억</td><td>10.61억</td><td>127.3억</td></tr>
-                    <tr><td>15%</td><td>13.62억</td><td>1.57억</td><td>10.91억</td><td>130.9억</td></tr>
-                    <tr><td>20%</td><td>14.21억</td><td>1.59억</td><td>11.48억</td><td>137.8억</td></tr>
-                    <tr><td>30%</td><td>15.39억</td><td>1.62억</td><td>12.63억</td><td>151.6억</td></tr>
-                </tbody>
-            </table>
-
-            <div class="sec-label">삼중 안전장치</div>
-            <div class="badge-strip">
-                <span class="badge gold">🛡 1차: 풀 15% → 기여이익 85% 병원 몫</span>
-                <span class="badge gold">🛡 2차: 흡수분 50% 할인 → 재배분 절반만 인정</span>
-                <span class="badge gold">🛡 3차: 기본급 150% 캡 → 초과분 병원 유보금</span>
-            </div>
-            <p class="note">※ 2026년 1월 실적 전년 동월 대비 +25.3% 성장 달성. 12.4%는 보수적 목표.</p>
-        </div>
-    </div>
-
-    <!-- INLINE CTA 2 -->
-    <div class="inline-cta" style="margin:0; border-radius:0; padding: 24px 28px;">
-        <p>성과급 시스템이 우리 병원에<br>얼마나 효과적인지 시뮬레이션 받기</p>
-        <a href="#apply">무료 ROI 진단 →</a>
-    </div>
-
-    <!-- ── STEP 06 ── -->
-    <div class="step-section" id="step06">
-        <div class="page-ind"><span><strong>STEP 06</strong> · 4-Layer 자산 승계</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 06</div></div>
-            <div>
-                <div class="step-header-title">4-Layer 지배구조<br>증여세 0원 자산 승계</div>
-                <div class="step-header-sub">자녀에게 100억을 물려줄 때 증여세를 내지 않아도 되는 구조</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="sec-label">세금 없이 자산을 이전하는 4단계 구조</div>
-            <div class="layer-flow">
-                <div class="layer-item">
-                    <div class="layer-num-badge">LAYER 1</div>
-                    <div class="layer-title">병원 (개인사업자)</div>
-                    <div class="layer-role">진료 수익 창출 → MSO에 경영지원 수수료 지급 → 과세소득 감소</div>
-                    <div class="layer-effect">→ 종합소득세 감소된 과세표준 적용</div>
-                </div>
-                <div class="layer-arrow-down">↓</div>
-                <div class="layer-item">
-                    <div class="layer-num-badge">LAYER 2</div>
-                    <div class="layer-title">MSO 법인 (벤처인증)</div>
-                    <div class="layer-role">수수료 수취 → 법인세 4.5~9.5% 납부 → 이익 축적 → 자녀 지주법인 배당</div>
-                    <div class="layer-effect">→ 법인세 4.5~9.5% (벤처 5년 50% 감면)</div>
-                </div>
-                <div class="layer-arrow-down">↓</div>
-                <div class="layer-item">
-                    <div class="layer-num-badge">LAYER 3</div>
-                    <div class="layer-title">자녀 지주법인</div>
-                    <div class="layer-role">자녀 100% 지분 법인이 MSO에서 배당 수취. 법인 간 배당 익금불산입(95%) 적용</div>
-                    <div class="layer-effect">→ 배당소득세 14% 분리과세만 부담</div>
-                </div>
-                <div class="layer-arrow-down">↓</div>
-                <div class="layer-item">
-                    <div class="layer-num-badge">LAYER 4</div>
-                    <div class="layer-title">개인 자산 (자녀)</div>
-                    <div class="layer-role">자녀 법인 잉여금으로 실물 자산 취득. '투자 수익'으로 분류 → 증여세 과세 근거 소멸</div>
-                    <div class="layer-effect">→ 증여세 0원. 가업상속공제 최대 600억</div>
-                </div>
-            </div>
-
-            <div class="sec-label">승계 핵심 지표</div>
-            <table class="report-table">
-                <thead>
-                    <tr><th>항목</th><th>일반 현금 증여</th><th>4-Layer 구조</th><th>절감 효과</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10억 이전 시 세금</td>
-                        <td class="val-red">2.4억 증여세</td>
-                        <td class="val-green">0원</td>
-                        <td class="val-gold">2.4억 절감</td>
-                    </tr>
-                    <tr>
-                        <td>50억 이전 시 세금</td>
-                        <td class="val-red">19.5억 증여세</td>
-                        <td class="val-green">0원</td>
-                        <td class="val-gold">19.5억 절감</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>가업상속공제</td>
-                        <td>미적용</td>
-                        <td class="val-green">최대 600억 한도</td>
-                        <td>완전 적용</td>
-                    </tr>
-                    <tr>
-                        <td>자녀 최소 연령</td>
-                        <td>—</td>
-                        <td class="val-green">만 9세 (실적)</td>
-                        <td>미성년자 가능</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="note">※ 상법 제3조: 미성년자의 법인 주주권 인정, 법정대리인 동의 시. USP 실제 적용 케이스 최소 연령 만 9세.</p>
-        </div>
-    </div>
-
-    <!-- ── STEP 07 ── -->
-    <div class="step-section" id="step07">
-        <div class="page-ind"><span><strong>STEP 07</strong> · 3중 방어 체크리스트</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 07</div></div>
-            <div>
-                <div class="step-header-title">3중 방어 거버넌스</div>
-                <div class="step-header-sub">국세청·의료법 공격 차단 — 2019년 이후 세무조사 0건 유지 구조</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="sec-label">🛡 부당행위계산 부인 방어 (국세청)</div>
-            <div class="check-list">
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>SLA 계약서 정밀 작성</h5><p>용역 범위·수수료 산정 기준 명시. 증빙: 계약서 원본</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>제3자 견적 비교 자료 상시 구비</h5><p>견적서 3건 이상. 시장 표준 수수료 근거 문서화</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>기업부설연구소 IP 기술 라이선스화</h5><p>병원 운영 알고리즘 특허 등록. 증빙: 라이선스 계약서</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>용역 실적 보고서 정기 발행</h5><p>월간/분기 보고서. 페이퍼컴퍼니 부인 증빙</p></div></div>
-            </div>
-
-            <div class="sec-label">🏛 페이퍼 컴퍼니 부인 방어</div>
-            <div class="check-list">
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>독립 사무공간 확보</h5><p>임대차 계약서, 사진 증빙</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>전담직원 채용 및 4대보험 가입</h5><p>가입증명서, 급여대장</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>정부 공인 표준 연구노트 작성</h5><p>연구노트 원본</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>다수 병원 B2B 거래 + 법인 통장 독립 관리</h5><p>세금계산서, 계약서, 통장 거래내역</p></div></div>
-            </div>
-
-            <div class="sec-label">⚖️ 1인 1개소법 방어 (의료법 제33조)</div>
-            <div class="check-list">
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>GP/LP 지배구조 도입</h5><p>GP(외부 전문가) 3% 지분 · LP(원장님+자녀) 97%. 사무장 병원 논란 100% 차단</p></div></div>
-                <div class="check-item pass"><span class="check-icon">✅</span><div class="check-text"><h5>원장님 경영 개입 완전 제거</h5><p>이사회 의사록, 정관, 규정으로 원장은 순수 투자자(LP) 지위 유지</p></div></div>
-            </div>
-
-            <div class="alert-box success">
-                <span class="ab-icon">🏆</span>
-                <div class="ab-text"><strong>2019~2025년 세무조사 적발 0건.</strong> 국세청 사전답변(서면질의) 완료 구조 적용. 당사 고객 47개 병원 전수 기록.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── STEP 08 ── -->
-    <div class="step-section" id="step08">
-        <div class="page-ind"><span><strong>STEP 08</strong> · 12개월 로드맵</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 08</div></div>
-            <div>
-                <div class="step-header-title">12개월 실행 로드맵</div>
-                <div class="step-header-sub">절세 + 성과급 + 승계 구조를 동시에 완성하는 단계별 플랜</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="step-flow">
-                <div class="sf-item">
-                    <div class="sf-dot">1</div>
-                    <div class="sf-content">
-                        <div class="sf-phase">PHASE 1 · 1~2개월</div>
-                        <div class="sf-title">기초 설계</div>
-                        <div class="sf-items">재무 현황 분석 및 절세 시뮬레이션<br>MSO 법인 설립 (상호, 목적, 주소 결정)<br>독립 사무공간 확보 및 임대차 계약<br>성과급 기여이익 구조 사전 설계</div>
-                    </div>
-                </div>
-                <div class="sf-item">
-                    <div class="sf-dot">2</div>
-                    <div class="sf-content">
-                        <div class="sf-phase">PHASE 2 · 3~4개월</div>
-                        <div class="sf-title">법적 인프라 + 인건비 구조화</div>
-                        <div class="sf-items">SLA(경영위탁계약서) 체결<br>페이닥터 GROSS 계약 전환 협의<br>성과급 시스템 도입 및 시범 운영<br>기업부설연구소 설립 신청</div>
-                    </div>
-                </div>
-                <div class="sf-item">
-                    <div class="sf-dot">3</div>
-                    <div class="sf-content">
-                        <div class="sf-phase">PHASE 3 · 5~7개월</div>
-                        <div class="sf-title">벤처 인증 + B2B 네트워크</div>
-                        <div class="sf-items">개인투자조합 설립 → 벤처 인증 취득<br>소득공제 신청 준비 (투자 증빙)<br>B2B 네트워크 파트너 확보<br>사내근로복지기금 설립</div>
-                    </div>
-                </div>
-                <div class="sf-item">
-                    <div class="sf-dot">4</div>
-                    <div class="sf-content">
-                        <div class="sf-phase">PHASE 4 · 8~12개월</div>
-                        <div class="sf-title">승계 완성</div>
-                        <div class="sf-items">자녀 지주법인 설립<br>GP/LP 지배구조 설계 및 도입<br>MSO → 자녀 지주법인 배당 구조 설계<br>DC형 퇴직연금 전환 완료<br>전체 구조 세무 리뷰 및 증빙 정비</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="alert-box info">
-                <span class="ab-icon">💡</span>
-                <div class="ab-text">표준 기간 12개월이나 빠르면 8개월 완성 가능. 원장님은 <strong>서명만</strong> 하시면 되도록 모든 행정 절차를 USP가 대행합니다.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── STEP 09 ── -->
-    <div class="step-section" id="step09">
-        <div class="page-ind"><span><strong>STEP 09</strong> · 케이스 스터디</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 09</div></div>
-            <div>
-                <div class="step-header-title">케이스 스터디</div>
-                <div class="step-header-sub">실제 적용 병원 — 원장님 동의 하에 익명 처리</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="case-box">
-                <div class="case-box-label">CASE 01 — K안과 · 2026년 적용</div>
-                <div class="case-box-stats">
-                    <div class="cbs-item"><div class="cbs-val">−4,424만</div><div class="cbs-lbl">인건비 절감 (월)</div></div>
-                    <div class="cbs-item"><div class="cbs-val">5.7배</div><div class="cbs-lbl">성과급 ROI</div></div>
-                    <div class="cbs-item"><div class="cbs-val">+13.5억</div><div class="cbs-lbl">3년 누적 순이익</div></div>
-                </div>
-                <div class="case-quote-text">"단순한 급여제도 개편이 아닙니다. 원장들이 스스로 매출을 견인하기 시작했고, 퇴직금·세무 리스크가 한 번에 정리됐어요. 12.4% 성장만 해도 투자 전액이 회수됩니다."</div>
-                <div class="case-attr">— K안과 원장님 (연매출 210억, 페이닥터 5인 체제)</div>
-            </div>
-
-            <div class="case-box">
-                <div class="case-box-label">CASE 02 — A피부과 · 2023년 적용 (3년 성과)</div>
-                <div class="case-box-stats">
-                    <div class="cbs-item"><div class="cbs-val">4.79억</div><div class="cbs-lbl">3년 누적 절세</div></div>
-                    <div class="cbs-item"><div class="cbs-val">1.68억</div><div class="cbs-lbl">3년차 연간 세금</div></div>
-                    <div class="cbs-item"><div class="cbs-val">0건</div><div class="cbs-lbl">세무조사 (3년)</div></div>
-                </div>
-                <div class="case-quote-text">"처음에는 세무조사가 무서워서 3년을 망설였습니다. 실제로 구조를 만들고 나니, 세무 리스크가 줄어드는 게 아니라 완전히 사라졌습니다. 3년간 아낀 4.79억을 보면 후회가 됩니다."</div>
-                <div class="case-attr">— A피부과 원장님 (순수익 8억, 페이닥터 4명)</div>
-            </div>
-
-            <div class="case-box">
-                <div class="case-box-label">CASE 03 — C피부과 · 2024년 적용</div>
-                <div class="case-box-stats">
-                    <div class="cbs-item"><div class="cbs-val">2.4억</div><div class="cbs-lbl">증여세 절감</div></div>
-                    <div class="cbs-item"><div class="cbs-val">0원</div><div class="cbs-lbl">실제 납부 증여세</div></div>
-                    <div class="cbs-item"><div class="cbs-val">만 16세</div><div class="cbs-lbl">자녀 법인<br>설립 시 연령</div></div>
-                </div>
-                <div class="case-quote-text">"자녀한테 뭔가 남겨주고 싶은데 세금이 너무 컸어요. USP의 4-Layer 구조로 지주법인을 만들었고 증여세 한 푼 없이 법인 지분으로 자산을 이전했습니다."</div>
-                <div class="case-attr">— C피부과 원장님 (자산이전 목적)</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── STEP 10 ── -->
-    <div class="step-section" id="step10">
-        <div class="page-ind"><span><strong>STEP 10</strong> · FAQ · 무료 진단</span><span>USP Company · 경영전략팀</span></div>
-        <div class="step-header">
-            <div><div class="step-badge">STEP 10</div></div>
-            <div>
-                <div class="step-header-title">자주 묻는 질문</div>
-                <div class="step-header-sub">원장님이 가장 많이 물어보시는 질문을 정리하였습니다.</div>
-            </div>
-        </div>
-        <div class="step-body">
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">법적 안전성</span><span class="faq-q-text">MSO가 탈세 아닌가요? 세무조사 걸리지 않나요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">MSO는 대법원 판례와 국세청 유권해석으로 합법성이 인정된 구조입니다. 핵심은 '실체성'입니다. USP는 독립 사무공간·전담직원·계약서·연구노트를 완비하여 2019년 이후 세무조사 적발 사례 0건을 유지하고 있습니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">성과급</span><span class="faq-q-text">NET 계약이 편한데 굳이 바꿔야 하나요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">NET 계약 유지만으로 연간 최소 5.4억 원의 숨은 비용이 발생합니다. GROSS 전환 시 닥터 실수령액 100% 동일 보전. 성과급을 통해 월 최대 4,000만 원까지 수령 가능하여 심리적 거부감 0%입니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">성과급 규모</span><span class="faq-q-text">성과급이 무한정 나가는 구조 아닌가요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">절대 불가합니다. 삼중 안전장치가 있습니다. 1차: 풀 비율 15% → 기여이익의 85%는 처음부터 병원 몫. 2차: 흡수분 50% 할인. 3차: 기본급 × 150% 캡 → 절대 상한. 기본급 2,200만이면 최대 3,300만까지만.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">기존 세무사</span><span class="faq-q-text">이미 세무사가 있는데 바꿔야 하나요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">기존 세무사를 유지하셔도 됩니다. USP는 세무 신고가 아닌 '구조 설계'를 담당합니다. 설계 완료 후 기존 세무사와 협업하는 방식도 가능합니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">자녀 승계</span><span class="faq-q-text">자녀가 미성년자인데 법인 주주가 될 수 있나요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">가능합니다. 상법 제3조에 따라 법정대리인(부모)의 동의 하에 미성년자도 법인 주주로 등재할 수 있습니다. 실제 USP 적용 케이스 중 자녀 최소 연령은 만 9세입니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">소요 기간</span><span class="faq-q-text">법인 설립이 복잡하고 시간이 많이 걸리지 않나요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">MSO 법인 설립부터 연구소 등록까지 평균 6~8주 내 완료됩니다. 원장님은 서명만 하시면 되도록 모든 행정 절차를 USP가 대행합니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">비용</span><span class="faq-q-text">컨설팅 비용은 얼마인가요?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">구조 복잡도에 따라 다르며, 무료 진단 후 맞춤 제안서를 드립니다. 통상 1년차 절세액의 15~25% 수준이며, 효과가 없으면 환불 보장합니다. (계약서 명시)</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="toggleFaq(this)">
-                        <div class="faq-q-wrap"><span class="faq-cat">한 문장 요약</span><span class="faq-q-text">이 솔루션을 한 문장으로 요약하면?</span></div>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-a">"이것은 단순한 절세 컨설팅이 아니라, 병원의 자산 가치를 극대화하는 가장 완벽한 투자입니다." — 병원장은 이기고 · 원장들은 더 번다 · 리스크는 사라진다.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FORM -->
     <div class="form-section" id="apply">
-        <div class="form-section-label">CONFIDENTIAL · USP Company · FINAL</div>
-        <h2>지금 신청하시면 24시간 내<br>경영 진단 보고서를<br>받으실 수 있습니다</h2>
-        <p>
-            통상 300만 원 상당의 경영 진단 시뮬레이션 보고서를
-            월 선착순 5팀 원장님께 무료로 제공합니다.<br><br>
-            ✅ 절세 시뮬레이션 · ✅ 성과급 ROI 진단 · ✅ 승계 설계 로드맵<br><br>
-            <strong style="color:rgba(255,255,255,0.7)">⏰ 3월 잔여 <span id="formRemain">3</span>팀</strong>
-        </p>
+        <div class="form-section-label">CONFIDENTIAL · USP Company</div>
+        <h2>지금 신청하시면 24시간 내<br>경영 진단 보고서를 드립니다</h2>
+        <p>✅ 절세 시뮬레이션 · ✅ 성과급 ROI 진단 · ✅ 승계 설계 로드맵</p>
+        
         <div class="form-row">
             <label>원장님 성함</label>
             <input type="text" id="fname" placeholder="성함을 입력해 주세요">
@@ -1530,47 +218,32 @@
             <label>진료과목</label>
             <select id="fdept">
                 <option value="">선택해 주세요</option>
-                <option>안과</option><option>피부과</option><option>성형외과</option>
-                <option>정형외과</option><option>치과</option><option>내과</option>
-                <option>산부인과</option><option>이비인후과</option><option>기타</option>
+                <option>안과</option><option>피부과</option><option>성형외과</option><option>치과</option><option>기타</option>
             </select>
         </div>
         <div class="form-row">
             <label>연 순수익 규모</label>
             <select id="frev">
                 <option value="">선택해 주세요</option>
-                <option>2억~3억</option><option>3억~5억</option>
-                <option>5억~10억</option><option>10억~20억</option><option>20억 이상</option>
+                <option>2억~5억</option><option>5억~10억</option><option>10억~20억</option><option>20억 이상</option>
             </select>
         </div>
         <div class="form-row">
             <label>관심 솔루션</label>
             <select id="finterest">
                 <option value="">선택해 주세요</option>
-                <option>절세 구조 (MSO)</option>
-                <option>성과급 시스템</option>
-                <option>자산 승계 (4-Layer)</option>
-                <option>전체 통합 솔루션</option>
+                <option>절세 구조 (MSO)</option><option>성과급 시스템</option><option>자산 승계</option><option>전체 통합 솔루션</option>
             </select>
         </div>
+        
         <button class="btn-submit" onclick="submitForm()">무료 경영 진단 신청하기 →</button>
-        <a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="btn-kakao-form">💬 카카오톡으로 바로 상담하기</a>
-        <p class="form-guarantee">🔒 개인정보는 상담 목적 외 활용되지 않습니다 · 영업일 기준 24시간 내 담당자 직접 연락</p>
+        <p class="form-guarantee">🔒 개인정보는 상담 목적 외 활용되지 않으며 24시간 내 연락드립니다.</p>
     </div>
 
-    <!-- FOOTER -->
     <div class="report-footer">
-        <div>
-            <div class="rf-brand">USP COMPANY</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;">병원경영지원전문회사</div>
-        </div>
-        <div class="rf-info">
-            <a href="tel:15336441" style="color:rgba(255,255,255,0.5);text-decoration:none;">1533-6441</a><br>
-            pf.kakao.com/_SxdxfxcG/chat<br>
-            Copyright © 2026 USP Company
-        </div>
+        <div><strong>USP COMPANY</strong><br>병원경영지원전문회사</div>
+        <div>Copyright © 2026 USP Company</div>
     </div>
-
 </div>
 
 <script>
@@ -1579,86 +252,71 @@
         document.getElementById('floatKakao').classList.toggle('show', window.scrollY > 400);
     });
 
-    // FADE IN ON SCROLL
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.style.opacity = '1';
-                e.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.step-section').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        io.observe(el);
-    });
-
-    // SIMULATOR
+    // SIMULATOR DATA
     const simData = [
-        { label:'2억',   before:'6,840만',      after:'3,600만',      rate:'47.4%', save:'3,240만',      cumul:'3억 2,400만' },
-        { label:'3억',   before:'1억 1,400만',   after:'5,800만',      rate:'49.1%', save:'5,600만',      cumul:'5억 6,000만' },
-        { label:'5억',   before:'1억 8,400만',   after:'9,530만',      rate:'48.2%', save:'8,870만',      cumul:'8억 8,700만' },
-        { label:'7억',   before:'2억 8,300만',   after:'1억 3,200만',  rate:'53.4%', save:'1억 5,100만',  cumul:'15억 1,000만' },
-        { label:'10억',  before:'4억 3,200만',   after:'1억 8,800만',  rate:'56.5%', save:'2억 4,400만',  cumul:'24억 4,000만' },
-        { label:'15억',  before:'6억 8,000만',   after:'2억 8,500만',  rate:'58.1%', save:'3억 9,500만',  cumul:'39억 5,000만' },
-        { label:'20억',  before:'9억 2,700만',   after:'3억 8,000만',  rate:'59.0%', save:'5억 4,700만',  cumul:'54억 7,000만' },
+        { label:'2억',  before:'6,840만',  after:'3,600만',  save:'3,240만' },
+        { label:'3억',  before:'1억 1,400만', after:'5,800만',  save:'5,600만' },
+        { label:'5억',  before:'1억 8,400만', after:'9,530만',  save:'8,870만' },
+        { label:'7억',  before:'2억 8,300만', after:'1억 3,200만', save:'1억 5,100만' },
+        { label:'10억', before:'4억 3,200만', after:'1억 8,800만', save:'2억 4,400만' },
+        { label:'15억', before:'6억 8,000만', after:'2억 8,500만', save:'3억 9,500만' },
+        { label:'20억', before:'9억 2,700만', after:'3억 8,000만', save:'5억 4,700만' }
     ];
+
     const ss = document.getElementById('simSlider');
     function updateSim() {
-        const idx = parseInt(ss.value);
-        const d = simData[idx];
-        document.getElementById('simDisplay').textContent = d.label;
-        document.getElementById('simBefore').textContent = d.before;
-        document.getElementById('simAfter').textContent = d.after;
-        document.getElementById('simRate').textContent = d.rate;
-        document.getElementById('simSave').textContent = d.save;
-        document.getElementById('simCumul').textContent = d.cumul;
-        const pct = (idx / (simData.length - 1)) * 100;
-        ss.style.backgroundSize = pct + '% 100%';
-
-        // 구간별 표 행 강조
-        for (let i = 0; i < simData.length; i++) {
-            const row = document.getElementById('simRow' + i);
-            if (!row) continue;
-            if (i === idx) {
-                row.classList.add('sim-active');
-                row.scrollIntoView && false; // 자동 스크롤 없음
-            } else {
-                row.classList.remove('sim-active');
-            }
-        }
+        const d = simData[ss.value];
+        document.getElementById('simDisplay').innerText = d.label;
+        document.getElementById('simBefore').innerText = d.before;
+        document.getElementById('simAfter').innerText = d.after;
+        document.getElementById('simSave').innerText = d.save;
     }
     ss.addEventListener('input', updateSim);
-    updateSim();
 
-    // FAQ
-    function toggleFaq(el) {
-        const item = el.closest('.faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-    }
-
-    // FORM
+    // FORM SUBMISSION (STORAGE + REDIRECT)
     function submitForm() {
         const n = document.getElementById('fname').value.trim();
         const p = document.getElementById('fphone').value.trim();
         const d = document.getElementById('fdept').value;
         const r = document.getElementById('frev').value;
-        if (!n || !p || !d || !r) { alert('모든 항목을 입력해 주세요.'); return; }
-        alert(`신청이 완료되었습니다, ${n} 원장님!\n영업일 기준 24시간 내 담당자가 연락드리겠습니다.\n\n☎ 1533-6441`);
-    }
+        const i = document.getElementById('finterest').value;
 
-    // REMAIN
-    let remain = 3;
-    setInterval(() => {
-        if (Math.random() < 0.05 && remain > 1) {
-            remain--;
-            document.getElementById('formRemain').textContent = remain;
+        if (!n || !p || !d || !r || !i) {
+            alert('모든 항목을 입력해 주세요.');
+            return;
         }
-    }, 30000);
+
+        const btn = document.querySelector('.btn-submit');
+        btn.disabled = true;
+        btn.innerText = "데이터 전송 중...";
+
+        // 구글 앱스 스크립트 웹 앱 URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx8JPtLlW5XI-OVdRZDt2tsBuD-kefttk33ICTiIl5H7a6l5J6st9QHgI8Lgq0dS8Ht3Q/exec';
+        
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                "name": n,
+                "phone": p,
+                "dept": d,
+                "revenue": r,
+                "interest": i
+            })
+        })
+        .then(() => {
+            // 전송 완료 신호 후 이동
+            alert(`신청이 완료되었습니다, ${n} 원장님!`);
+            window.location.href = "success.html";
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
+            btn.disabled = false;
+            btn.innerText = "무료 경영 진단 신청하기 →";
+        });
+    }
 </script>
 </body>
 </html>
