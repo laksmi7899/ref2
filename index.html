@@ -27,7 +27,7 @@
         body { font-family: 'Pretendard', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         .page { max-width: 680px; margin: 0 auto; background: #fff; box-shadow: 0 0 60px rgba(0,0,0,0.08); }
 
-        /* ── FLOATING ── */
+        /* ── FLOATING KAKAO ── */
         .float-kakao {
             position: fixed; bottom: 24px; right: 16px; z-index: 999;
             background: var(--kakao); color: #3C1E1E;
@@ -40,6 +40,35 @@
             transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
         }
         .float-kakao.show { opacity: 1; transform: translateY(0); }
+
+        /* ── SCROLL TO TOP BTN ── */
+        .scroll-top-btn {
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            margin: 28px auto 0;
+            padding: 9px 18px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 12px; font-weight: 700;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Pretendard', sans-serif;
+            letter-spacing: -0.02em;
+            width: fit-content;
+        }
+        .scroll-top-btn:hover {
+            background: var(--gold-bg);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .scroll-top-btn svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+            transition: transform 0.2s;
+        }
+        .scroll-top-btn:hover svg { transform: translateY(-2px); }
 
         /* ── COVER ── */
         .cover {
@@ -105,10 +134,7 @@
         .toc-text { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.4; word-break: keep-all; }
 
         /* ── COVER CTA ── */
-        .cover-cta-block {
-            background: transparent;
-            padding: 32px 0 0;
-        }
+        .cover-cta-block { background: transparent; padding: 32px 0 0; }
         .btn-cover-primary {
             display: block; width: 100%;
             padding: 18px 24px; margin-bottom: 12px;
@@ -139,7 +165,7 @@
             text-align: center; margin-top: 12px; line-height: 1.6;
         }
 
-        /* ── TOP BAR (urgency) ── */
+        /* ── TOP BAR ── */
         .top-bar {
             background: var(--gold-bg);
             border-bottom: 1px solid var(--border);
@@ -214,7 +240,6 @@
         .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
         .kpi-item { padding: 18px 14px; text-align: center; border-right: 1px solid var(--border); }
         .kpi-item:last-child { border-right: none; }
-        .kpi-item:nth-child(3), .kpi-item:nth-child(4) { border-top: none; }
         .kpi-val { font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 5px; }
         .kpi-lbl { font-size: 11px; color: var(--text-light); line-height: 1.4; }
         .kpi-sub { font-size: 10px; color: var(--text-light); margin-top: 3px; font-style: italic; }
@@ -228,11 +253,7 @@
         .compare-col { padding: 20px 18px; }
         .compare-col.before { background: #FFF5F5; }
         .compare-col.after { background: #F0FFF4; }
-        .compare-arrow {
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 12px; background: var(--gold-bg);
-            font-size: 20px; color: var(--gold); font-weight: 900;
-        }
+        .compare-arrow { display: flex; align-items: center; justify-content: center; padding: 0 12px; background: var(--gold-bg); font-size: 20px; color: var(--gold); font-weight: 900; }
         .cmp-tag { font-size: 10px; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
         .cmp-tag.bad { color: var(--red); }
         .cmp-tag.good { color: var(--green); }
@@ -275,10 +296,7 @@
         .sf-items { font-size: 12px; color: var(--text-sub); line-height: 1.85; }
 
         /* ── ALERT BOX ── */
-        .alert-box {
-            border-radius: 8px; padding: 16px 18px; margin-bottom: 16px;
-            display: flex; gap: 12px; align-items: flex-start;
-        }
+        .alert-box { border-radius: 8px; padding: 16px 18px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; }
         .alert-box.warning { background: rgba(217,64,64,0.06); border: 1px solid rgba(217,64,64,0.2); }
         .alert-box.info { background: rgba(197,160,89,0.07); border: 1px solid rgba(197,160,89,0.25); }
         .alert-box.success { background: rgba(46,139,87,0.06); border: 1px solid rgba(46,139,87,0.2); }
@@ -287,35 +305,25 @@
         .ab-text strong { font-weight: 800; }
 
         /* ── CASE QUOTE ── */
-        .case-box {
-            background: var(--dark); border-radius: 10px;
-            padding: 24px 22px; margin-bottom: 20px;
-        }
+        .case-box { background: var(--dark); border-radius: 10px; padding: 24px 22px; margin-bottom: 20px; }
         .case-box-label { font-size: 10px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
         .case-box-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 18px; }
         .cbs-item { text-align: center; }
         .cbs-val { font-size: 20px; font-weight: 900; color: var(--gold); }
         .cbs-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; line-height: 1.4; }
-        .case-quote-text {
-            font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75;
-            border-left: 3px solid var(--gold); padding-left: 14px; font-style: italic;
-        }
+        .case-quote-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75; border-left: 3px solid var(--gold); padding-left: 14px; font-style: italic; }
         .case-attr { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 10px; }
 
         /* ── FAQ ── */
         .faq-list { display: flex; flex-direction: column; gap: 8px; }
         .faq-item { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-        .faq-q {
-            padding: 15px 18px; cursor: pointer;
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-            transition: background 0.15s;
-        }
+        .faq-q { padding: 15px 18px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background 0.15s; }
         .faq-q:hover { background: var(--gold-bg); }
         .faq-q-wrap { display: flex; align-items: center; gap: 10px; }
         .faq-cat { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; color: var(--gold); background: rgba(197,160,89,0.12); border-radius: 4px; padding: 3px 7px; white-space: nowrap; }
         .faq-q-text { font-size: 13px; font-weight: 700; color: var(--text); word-break: keep-all; }
         .faq-icon { font-size: 18px; color: var(--gold); font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
-        .faq-a { display: none; padding: 0 18px 16px; font-size: 13px; color: var(--text-sub); line-height: 1.75; border-top: 1px solid var(--border-light); padding-top: 14px; }
+        .faq-a { display: none; padding: 14px 18px 16px; font-size: 13px; color: var(--text-sub); line-height: 1.75; border-top: 1px solid var(--border-light); }
         .faq-item.open .faq-a { display: block; }
         .faq-item.open .faq-icon { transform: rotate(45deg); }
         .faq-item.open .faq-q { background: var(--gold-bg); }
@@ -354,21 +362,9 @@
 
         /* ── LAYER DIAGRAM ── */
         .layer-flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
-        .layer-item {
-            border: 1px solid var(--border);
-            border-radius: 10px; padding: 18px 20px;
-            position: relative;
-        }
-        .layer-arrow-down {
-            text-align: center; font-size: 18px; color: var(--gold);
-            padding: 6px 0; font-weight: 900; line-height: 1;
-        }
-        .layer-num-badge {
-            display: inline-block; font-size: 10px; font-weight: 900;
-            letter-spacing: 1.5px; color: var(--gold);
-            background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3);
-            border-radius: 4px; padding: 3px 8px; margin-bottom: 8px;
-        }
+        .layer-item { border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; position: relative; }
+        .layer-arrow-down { text-align: center; font-size: 18px; color: var(--gold); padding: 6px 0; font-weight: 900; line-height: 1; }
+        .layer-num-badge { display: inline-block; font-size: 10px; font-weight: 900; letter-spacing: 1.5px; color: var(--gold); background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
         .layer-title { font-size: 15px; font-weight: 900; margin-bottom: 4px; }
         .layer-role { font-size: 12px; color: var(--text-sub); margin-bottom: 5px; }
         .layer-effect { font-size: 12px; color: var(--gold); font-weight: 700; }
@@ -383,17 +379,12 @@
 
         /* ── DIVIDER ── */
         .divider { height: 1px; background: var(--border-light); margin: 24px 0; }
-        .divider-gold { height: 2px; background: linear-gradient(to right, var(--gold), transparent); margin: 0 0 24px; }
 
         /* ── INLINE NOTE ── */
         .note { font-size: 11px; color: var(--text-light); font-style: italic; margin-top: 8px; line-height: 1.6; }
 
         /* ── FOOTER ── */
-        .report-footer {
-            background: var(--dark2); padding: 28px 28px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
+        .report-footer { background: var(--dark2); padding: 28px 28px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
         .rf-brand { font-size: 13px; font-weight: 900; color: var(--gold); }
         .rf-info { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.7; text-align: right; }
 
@@ -408,10 +399,7 @@
 
         /* ── BADGE STRIP ── */
         .badge-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .badge {
-            font-size: 12px; font-weight: 700;
-            border-radius: 6px; padding: 6px 12px;
-        }
+        .badge { font-size: 12px; font-weight: 700; border-radius: 6px; padding: 6px 12px; }
         .badge.green { background: rgba(46,139,87,0.1); color: var(--green); border: 1px solid rgba(46,139,87,0.25); }
         .badge.gold { background: rgba(197,160,89,0.1); color: var(--gold); border: 1px solid rgba(197,160,89,0.25); }
         .badge.red { background: rgba(217,64,64,0.08); color: var(--red); border: 1px solid rgba(217,64,64,0.2); }
@@ -424,12 +412,7 @@
             margin: 28px 0; flex-wrap: wrap;
         }
         .inline-cta p { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.4; word-break: keep-all; }
-        .inline-cta a {
-            background: var(--gold); color: #fff;
-            font-size: 13px; font-weight: 800; border-radius: 8px;
-            padding: 12px 20px; text-decoration: none; white-space: nowrap;
-            transition: all 0.15s; flex-shrink: 0;
-        }
+        .inline-cta a { background: var(--gold); color: #fff; font-size: 13px; font-weight: 800; border-radius: 8px; padding: 12px 20px; text-decoration: none; white-space: nowrap; transition: all 0.15s; flex-shrink: 0; }
         .inline-cta a:hover { background: #b08e4a; }
 
         /* ── SIMULATOR ── */
@@ -443,11 +426,7 @@
             background-size: 60% 100%;
             background-color: var(--border); border-radius: 3px; cursor: pointer;
         }
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 20px; height: 20px;
-            border-radius: 50%; background: var(--gold);
-            box-shadow: 0 2px 8px rgba(197,160,89,0.4); cursor: pointer;
-        }
+        .range-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); box-shadow: 0 2px 8px rgba(197,160,89,0.4); cursor: pointer; }
         .sim-results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
         .sim-res-item { text-align: center; background: #fff; border-radius: 8px; padding: 14px 10px; border: 1px solid var(--border); }
         .sim-res-label { font-size: 10px; color: var(--text-light); margin-bottom: 6px; line-height: 1.4; }
@@ -455,15 +434,12 @@
         .sim-res-val.red { color: var(--red); }
         .sim-res-val.green { color: var(--green); }
         .sim-res-val.gold { color: var(--gold); }
-        .sim-highlight-row {
-            background: var(--dark); border-radius: 8px; padding: 16px 18px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
+        .sim-highlight-row { background: var(--dark); border-radius: 8px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; }
         .sh-label { font-size: 12px; color: rgba(255,255,255,0.5); }
         .sh-val { font-size: 22px; font-weight: 900; color: var(--gold); }
         .sh-5y { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
 
-        /* ── GROWTH TABLE highlight ── */
+        /* ── GROWTH TABLE ── */
         .growth-bep { background: rgba(197,160,89,0.1) !important; }
         .growth-bep td { color: var(--gold) !important; font-weight: 800 !important; }
 
@@ -472,233 +448,91 @@
             background: rgba(197,160,89,0.13) !important;
             outline: 2px solid var(--gold);
             outline-offset: -1px;
-            position: relative;
         }
-        .report-table tbody tr.sim-active td {
-            color: var(--dark) !important;
-            font-weight: 800 !important;
-        }
+        .report-table tbody tr.sim-active td { color: var(--dark) !important; font-weight: 800 !important; }
         .report-table tbody tr.sim-active td.val-red { color: var(--red) !important; }
         .report-table tbody tr.sim-active td.val-green { color: var(--green) !important; }
         .report-table tbody tr.sim-active td.val-gold { color: var(--gold) !important; }
 
         /* ════════════════════════════════
-           MOBILE FIRST — 480px 이하
+           MOBILE — 480px 이하
         ════════════════════════════════ */
         @media (max-width: 480px) {
-
-            /* ── COVER CTA ── */
-            .cover-cta-block { padding: 24px 0 0; }
-            .btn-cover-primary { font-size: 15px; padding: 17px 20px; border-radius: 12px; }
-            .btn-cover-primary small { font-size: 11px; }
-            .btn-cover-kakao { font-size: 14px; padding: 15px 20px; border-radius: 12px; min-height: 52px; }
-
-            /* ── FLOAT BTN ── */
-            .float-kakao {
-                bottom: 16px; right: 12px;
-                padding: 12px 16px; font-size: 12px;
-            }
-
-            /* ── TOP BAR ── */
+            .float-kakao { bottom: 16px; right: 12px; padding: 12px 16px; font-size: 12px; }
             .top-bar { padding: 9px 16px; gap: 8px; }
             .top-bar-text { font-size: 11px; }
             .top-bar-cta { padding: 5px 10px; font-size: 10px; }
-
-            /* ── COVER ── */
             .cover { padding: 36px 20px 40px; }
             .cover-title { font-size: 34px; }
             .cover-subtitle { font-size: 14px; margin-bottom: 32px; }
-
-            /* 커버 메타: 가로 → 세로 */
-            .cover-meta {
-                flex-direction: column;
-                gap: 0;
-                padding-top: 20px;
-            }
-            .cover-meta-item {
-                padding-right: 0;
-                padding-bottom: 14px;
-                margin-bottom: 14px;
-                border-right: none !important;
-                margin-right: 0 !important;
-                border-bottom: 1px solid rgba(255,255,255,0.08);
-                display: flex; align-items: center; gap: 16px;
-            }
-            .cover-meta-item:last-child {
-                border-bottom: none;
-                padding-bottom: 0; margin-bottom: 0;
-            }
-            .cm-label { margin-bottom: 3px; }
+            .cover-meta { flex-direction: column; gap: 0; padding-top: 20px; }
+            .cover-meta-item { padding-right: 0; padding-bottom: 14px; margin-bottom: 14px; border-right: none !important; margin-right: 0 !important; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 16px; }
+            .cover-meta-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
             .cm-val { font-size: 20px; }
-
-            /* TOC */
             .toc-grid { grid-template-columns: 1fr; gap: 6px; }
             .toc-item { padding: 10px 12px; }
-
-            /* ── PAGE INDICATOR ── */
-            .page-ind {
-                padding: 7px 16px;
-                font-size: 10px;
-            }
+            .page-ind { padding: 7px 16px; font-size: 10px; }
             .page-ind span:last-child { display: none; }
-
-            /* ── STEP HEADER ── */
             .step-header { padding: 14px 16px 12px; gap: 10px; }
             .step-header-title { font-size: 17px; }
-            .step-header-sub { font-size: 11px; }
-
-            /* ── STEP BODY ── */
             .step-body { padding: 20px 16px 24px; }
-            .sec-label { font-size: 10px; margin-top: 22px; }
-
-            /* ── KPI GRID: 4열 → 2x2 ── */
             .kpi-grid { grid-template-columns: repeat(2,1fr); }
             .kpi-item:nth-child(2) { border-right: none; }
             .kpi-item:nth-child(3) { border-top: 1px solid var(--border); }
             .kpi-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
             .kpi-val { font-size: 18px; }
             .kpi-lbl { font-size: 10px; }
-
-            /* ── TABLES: 가로 스크롤 ── */
-            .report-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                font-size: 12px;
-                margin-left: -16px;
-                margin-right: -16px;
-                width: calc(100% + 32px);
-            }
+            .report-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 12px; margin-left: -16px; margin-right: -16px; width: calc(100% + 32px); }
             .report-table thead th { padding: 9px 10px; font-size: 11px; }
             .report-table tbody td { padding: 9px 10px; }
-
-            /* ── WIN-WIN TABLE ── */
-            .ww-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin-left: -16px;
-                margin-right: -16px;
-                width: calc(100% + 32px);
-            }
+            .ww-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-left: -16px; margin-right: -16px; width: calc(100% + 32px); }
             .ww-table th, .ww-table td { padding: 9px 10px; font-size: 11px; white-space: nowrap; }
-
-            /* ── SIMULATOR ── */
             .sim-wrap { padding: 18px 14px; }
             .sim-slider-row { gap: 10px; }
             .sim-slider-label { font-size: 11px; }
             .sim-slider-val { font-size: 18px; min-width: 60px; }
             .range-slider::-webkit-slider-thumb { width: 24px; height: 24px; }
-
-            /* 시뮬레이터 결과: 3열 → 3열 유지하되 폰트 축소 */
-            .sim-results-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+            .sim-results-grid { gap: 6px; }
             .sim-res-item { padding: 10px 6px; }
             .sim-res-label { font-size: 9px; }
             .sim-res-val { font-size: 13px; }
-
-            /* 시뮬레이터 하이라이트: 가로 → 세로 */
-            .sim-highlight-row {
-                flex-direction: column;
-                gap: 14px;
-                padding: 16px 14px;
-            }
-            .sim-highlight-row a {
-                width: 100%; text-align: center;
-                padding: 14px; font-size: 13px;
-                border-radius: 8px;
-            }
+            .sim-highlight-row { flex-direction: column; gap: 14px; padding: 16px 14px; }
+            .sim-highlight-row a { width: 100%; text-align: center; padding: 14px; font-size: 13px; border-radius: 8px; }
             .sh-val { font-size: 20px; }
-
-            /* ── CASE BOX ── */
             .case-box { padding: 20px 16px; }
-            .case-box-stats {
-                grid-template-columns: repeat(3,1fr);
-                gap: 8px;
-            }
+            .case-box-stats { gap: 8px; }
             .cbs-val { font-size: 16px; }
             .cbs-lbl { font-size: 10px; }
-
-            /* ── INLINE CTA: 가로 → 세로 ── */
-            .inline-cta {
-                flex-direction: column;
-                gap: 14px;
-                padding: 22px 20px !important;
-                text-align: center;
-            }
-            .inline-cta a {
-                width: 100%; text-align: center;
-                padding: 14px 20px; font-size: 14px;
-            }
-
-            /* ── CHECK LIST ── */
+            .inline-cta { flex-direction: column; gap: 14px; padding: 22px 20px !important; text-align: center; }
+            .inline-cta a { width: 100%; text-align: center; padding: 14px 20px; font-size: 14px; }
             .check-item { padding: 12px 14px; gap: 10px; }
             .check-text h5 { font-size: 12px; }
             .check-text p { font-size: 11px; }
-
-            /* ── LAYER FLOW ── */
             .layer-item { padding: 14px 16px; }
             .layer-title { font-size: 14px; }
-            .layer-role { font-size: 11px; }
-            .layer-effect { font-size: 11px; }
-
-            /* ── STEP FLOW (로드맵) ── */
             .step-flow::before { left: 17px; }
             .sf-dot { width: 34px; height: 34px; font-size: 11px; }
             .sf-title { font-size: 14px; }
             .sf-items { font-size: 11px; }
-
-            /* ── ALERT BOX ── */
             .alert-box { padding: 13px 14px; gap: 10px; }
             .ab-text { font-size: 12px; }
-
-            /* ── FAQ ── */
-            .faq-q {
-                padding: 14px 16px;
-                min-height: 52px; /* 터치 타깃 확보 */
-            }
+            .faq-q { padding: 14px 16px; min-height: 52px; }
             .faq-q-wrap { gap: 7px; }
-            .faq-cat { font-size: 9px; padding: 2px 6px; white-space: nowrap; }
+            .faq-cat { font-size: 9px; padding: 2px 6px; }
             .faq-q-text { font-size: 12px; }
             .faq-icon { font-size: 20px; min-width: 20px; }
             .faq-a { font-size: 12px; padding: 13px 16px 14px; }
-
-            /* ── BADGE STRIP ── */
             .badge { font-size: 11px; padding: 6px 10px; }
-
-            /* ── FORM ── */
             .form-section { padding: 32px 20px 36px; }
             .form-section h2 { font-size: 20px; }
-            .form-section p { font-size: 12px; line-height: 1.75; }
-            .form-row input, .form-row select {
-                padding: 14px 13px;
-                font-size: 16px; /* iOS 줌 방지: 16px 이상 필수 */
-            }
-            .btn-submit {
-                padding: 18px;
-                font-size: 15px;
-                min-height: 56px; /* 터치 타깃 */
-            }
-            .btn-kakao-form {
-                padding: 16px;
-                font-size: 14px;
-                min-height: 52px;
-            }
-            .form-guarantee { font-size: 10px; }
-
-            /* ── FOOTER: 가로 → 세로 ── */
-            .report-footer {
-                flex-direction: column;
-                gap: 14px;
-                text-align: center;
-                padding: 24px 20px;
-            }
+            .form-section p { font-size: 12px; }
+            .form-row input, .form-row select { padding: 14px 13px; font-size: 16px; }
+            .btn-submit { padding: 18px; font-size: 15px; min-height: 56px; }
+            .btn-kakao-form { padding: 16px; font-size: 14px; min-height: 52px; }
+            .report-footer { flex-direction: column; gap: 14px; text-align: center; padding: 24px 20px; }
             .rf-info { text-align: center; font-size: 11px; }
-
-            /* ── NOTE ── */
-            .note { font-size: 10px; }
+            .scroll-top-btn { font-size: 11px; padding: 9px 16px; }
         }
-
-        /* ── 375px 이하 초소형 대응 ── */
         @media (max-width: 375px) {
             .cover-title { font-size: 28px; }
             .cover { padding: 28px 16px 32px; }
@@ -706,7 +540,6 @@
             .kpi-val { font-size: 16px; }
             .sim-res-val { font-size: 12px; }
             .cbs-val { font-size: 14px; }
-            .case-box-stats { gap: 4px; }
         }
     </style>
 </head>
@@ -749,7 +582,6 @@
                 <div class="cm-sub">2019~2025</div>
             </div>
         </div>
-        <!-- ── COVER CTA ── -->
         <div class="cover-cta-block">
             <a href="#apply" class="btn-cover-primary">
                 📊 무료 병원 경영 진단 신청
@@ -781,9 +613,7 @@
     <div class="step-section" id="step01">
         <div class="page-ind"><span><strong>STEP 01</strong> · 경영 진단 대시보드</span><span>USP Company · 경영전략팀</span></div>
         <div class="step-header">
-            <div>
-                <div class="step-badge">STEP 01</div>
-            </div>
+            <div><div class="step-badge">STEP 01</div></div>
             <div>
                 <div class="step-header-title">경영 진단 대시보드</div>
                 <div class="step-header-sub">지금 원장님 병원에서 새고 있는 돈을 한눈에 요약합니다.</div>
@@ -865,39 +695,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>절세 누적액</td>
-                        <td>8,840만</td>
-                        <td>4.42억</td>
-                        <td>8.84억</td>
-                    </tr>
-                    <tr>
-                        <td>증여세 절감 (4-Layer)</td>
-                        <td>—</td>
-                        <td>3억~5억</td>
-                        <td>10억~15억</td>
-                    </tr>
-                    <tr>
-                        <td>복지기금 절세</td>
-                        <td>2,475만</td>
-                        <td>1.24억</td>
-                        <td>2.48억</td>
-                    </tr>
-                    <tr>
-                        <td>GROSS 전환 절감 (3명)</td>
-                        <td>4,500만</td>
-                        <td>2.25억</td>
-                        <td>4.5억</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>★ 총 누적 효과</td>
-                        <td>1.58억</td>
-                        <td>10.4억</td>
-                        <td>25.8억+</td>
-                    </tr>
+                    <tr><td>절세 누적액</td><td>8,840만</td><td>4.42억</td><td>8.84억</td></tr>
+                    <tr><td>증여세 절감 (4-Layer)</td><td>—</td><td>3억~5억</td><td>10억~15억</td></tr>
+                    <tr><td>복지기금 절세</td><td>2,475만</td><td>1.24억</td><td>2.48억</td></tr>
+                    <tr><td>GROSS 전환 절감 (3명)</td><td>4,500만</td><td>2.25억</td><td>4.5억</td></tr>
+                    <tr class="highlight"><td>★ 총 누적 효과</td><td>1.58억</td><td>10.4억</td><td>25.8억+</td></tr>
                 </tbody>
             </table>
             <p class="note">※ MSO 벤처 인증 + 소득공제 적용 기준. 개인 상황에 따라 변동 가능.</p>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -965,6 +774,10 @@
                 </tbody>
             </table>
             <p class="note">※ MSO 벤처인증 + 소득공제 적용 기준. 벤처 최초 인증 후 5년간 법인세 50% 감면.</p>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1055,6 +868,10 @@
                 </tbody>
             </table>
             <p class="note">※ 개인투자조합 패스트트랙: 기술 심사 불필요, 수 주 내 인증 완료. 조세특례제한법 100% 합법.</p>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1169,6 +986,10 @@
                 </tbody>
             </table>
             <p class="note">※ 병원장은 이기고 · 원장들은 더 번다 · 리스크는 사라진다</p>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1210,6 +1031,10 @@
                 <span class="badge gold">🛡 3차: 기본급 150% 캡 → 초과분 병원 유보금</span>
             </div>
             <p class="note">※ 2026년 1월 실적 전년 동월 대비 +25.3% 성장 달성. 12.4%는 보수적 목표.</p>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1294,6 +1119,10 @@
                 </tbody>
             </table>
             <p class="note">※ 상법 제3조: 미성년자의 법인 주주권 인정, 법정대리인 동의 시. USP 실제 적용 케이스 최소 연령 만 9세.</p>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1334,6 +1163,10 @@
                 <span class="ab-icon">🏆</span>
                 <div class="ab-text"><strong>2019~2025년 세무조사 적발 0건.</strong> 국세청 사전답변(서면질의) 완료 구조 적용. 당사 고객 47개 병원 전수 기록.</div>
             </div>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1387,6 +1220,10 @@
                 <span class="ab-icon">💡</span>
                 <div class="ab-text">표준 기간 12개월이나 빠르면 8개월 완성 가능. 원장님은 <strong>서명만</strong> 하시면 되도록 모든 행정 절차를 USP가 대행합니다.</div>
             </div>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1433,6 +1270,10 @@
                 <div class="case-quote-text">"자녀한테 뭔가 남겨주고 싶은데 세금이 너무 컸어요. USP의 4-Layer 구조로 지주법인을 만들었고 증여세 한 푼 없이 법인 지분으로 자산을 이전했습니다."</div>
                 <div class="case-attr">— C피부과 원장님 (자산이전 목적)</div>
             </div>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1505,6 +1346,10 @@
                     <div class="faq-a">"이것은 단순한 절세 컨설팅이 아니라, 병원의 자산 가치를 극대화하는 가장 완벽한 투자입니다." — 병원장은 이기고 · 원장들은 더 번다 · 리스크는 사라진다.</div>
                 </div>
             </div>
+            <button class="scroll-top-btn" onclick="scrollToTop()">
+                <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                맨 위로
+            </button>
         </div>
     </div>
 
@@ -1523,57 +1368,55 @@
             <input type="text" id="fname" placeholder="성함을 입력해 주세요">
         </div>
         <div class="form-row">
-            <<label>연락처</label>
-                <input type="tel" id="phone" required placeholder="010-0000-0000">
-            </div>
-            
-            <div class="form-row">
-                <label>병원명</label>
-                <input type="text" id="hospital" required placeholder="병원명을 입력해 주세요">
-            </div>
-            <div class="form-row">
-                <label>병원 주소</label>
-                <input type="text" id="address" required placeholder="병원의 주소를 입력해주세요">
-            </div>
-        
+            <label>연락처</label>
+            <input type="tel" id="phone" placeholder="010-0000-0000">
+        </div>
+        <div class="form-row">
+            <label>병원명</label>
+            <input type="text" id="hospital" placeholder="병원명을 입력해 주세요">
+        </div>
+        <div class="form-row">
+            <label>병원 주소</label>
+            <input type="text" id="address" placeholder="병원의 주소를 입력해주세요">
+        </div>
         <div class="form-row">
             <label>진료과목</label>
-                <select id="dept">
-                    <option value="">선택해 주세요</option>
-                    <option>안과</option>
-                    <option>피부과</option>
-                    <option>성형외과</option>
-                    <option>정형외과</option>
-                    <option>치과</option>
-                    <option>내과</option>
-                    <option>한방병원,한의원과</option>
-                    <option>이비인후과</option>
-                    <option>기타</option>
-                </select>
+            <select id="dept">
+                <option value="">선택해 주세요</option>
+                <option>안과</option>
+                <option>피부과</option>
+                <option>성형외과</option>
+                <option>정형외과</option>
+                <option>치과</option>
+                <option>내과</option>
+                <option>한방병원,한의원과</option>
+                <option>이비인후과</option>
+                <option>기타</option>
+            </select>
         </div>
         <div class="form-row">
             <label>연 순수익 규모</label>
-                <select id="revenue">
-                    <option value="">선택해 주세요</option>
-                    <option>20억 이하</option>
-                    <option>50억 이하</option>
-                    <option>100억 이하</option>
-                    <option>200억 이하</option>
-                    <option>300억 이상</option>
-                </select>
+            <select id="revenue">
+                <option value="">선택해 주세요</option>
+                <option>20억 이하</option>
+                <option>50억 이하</option>
+                <option>100억 이하</option>
+                <option>200억 이하</option>
+                <option>300억 이상</option>
+            </select>
         </div>
         <div class="form-row">
             <label>관심 솔루션</label>
-                <select id="interest">
-                    <option value="">선택해 주세요</option>
-                    <option>경영 효율화</option>
-                    <option>네트워크 병원 MSO HQ</option>
-                    <option>매출 증대</option>
-                    <option>페이닥터 급여체계</option>
-                    <option>개인소득세 절세</option>
-                    <option>증여상속</option>
-                    <option>기타(MSO)</option>
-                </select>
+            <select id="interest">
+                <option value="">선택해 주세요</option>
+                <option>경영 효율화</option>
+                <option>네트워크 병원 MSO HQ</option>
+                <option>매출 증대</option>
+                <option>페이닥터 급여체계</option>
+                <option>개인소득세 절세</option>
+                <option>증여상속</option>
+                <option>기타(MSO)</option>
+            </select>
         </div>
         <button class="btn-submit" onclick="submitForm()">무료 경영 진단 신청하기 →</button>
         <a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" class="btn-kakao-form">💬 카카오톡으로 바로 상담하기</a>
@@ -1596,12 +1439,12 @@
 </div>
 
 <script>
-    // FLOAT KAKAO
+    // ── FLOAT KAKAO ──
     window.addEventListener('scroll', () => {
         document.getElementById('floatKakao').classList.toggle('show', window.scrollY > 400);
     });
 
-    // FADE IN ON SCROLL
+    // ── FADE IN ON SCROLL ──
     const io = new IntersectionObserver((entries) => {
         entries.forEach(e => {
             if (e.isIntersecting) {
@@ -1617,15 +1460,20 @@
         io.observe(el);
     });
 
-    // SIMULATOR
+    // ── SCROLL TO TOP ──
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── SIMULATOR ──
     const simData = [
-        { label:'2억',   before:'6,840만',      after:'3,600만',      rate:'47.4%', save:'3,240만',      cumul:'3억 2,400만' },
-        { label:'3억',   before:'1억 1,400만',   after:'5,800만',      rate:'49.1%', save:'5,600만',      cumul:'5억 6,000만' },
-        { label:'5억',   before:'1억 8,400만',   after:'9,530만',      rate:'48.2%', save:'8,870만',      cumul:'8억 8,700만' },
-        { label:'7억',   before:'2억 8,300만',   after:'1억 3,200만',  rate:'53.4%', save:'1억 5,100만',  cumul:'15억 1,000만' },
-        { label:'10억',  before:'4억 3,200만',   after:'1억 8,800만',  rate:'56.5%', save:'2억 4,400만',  cumul:'24억 4,000만' },
-        { label:'15억',  before:'6억 8,000만',   after:'2억 8,500만',  rate:'58.1%', save:'3억 9,500만',  cumul:'39억 5,000만' },
-        { label:'20억',  before:'9억 2,700만',   after:'3억 8,000만',  rate:'59.0%', save:'5억 4,700만',  cumul:'54억 7,000만' },
+        { label:'2억',  before:'6,840만',     after:'3,600만',     rate:'47.4%', save:'3,240만',     cumul:'3억 2,400만' },
+        { label:'3억',  before:'1억 1,400만',  after:'5,800만',     rate:'49.1%', save:'5,600만',     cumul:'5억 6,000만' },
+        { label:'5억',  before:'1억 8,400만',  after:'9,530만',     rate:'48.2%', save:'8,870만',     cumul:'8억 8,700만' },
+        { label:'7억',  before:'2억 8,300만',  after:'1억 3,200만', rate:'53.4%', save:'1억 5,100만', cumul:'15억 1,000만' },
+        { label:'10억', before:'4억 3,200만',  after:'1억 8,800만', rate:'56.5%', save:'2억 4,400만', cumul:'24억 4,000만' },
+        { label:'15억', before:'6억 8,000만',  after:'2억 8,500만', rate:'58.1%', save:'3억 9,500만', cumul:'39억 5,000만' },
+        { label:'20억', before:'9억 2,700만',  after:'3억 8,000만', rate:'59.0%', save:'5억 4,700만', cumul:'54억 7,000만' },
     ];
     const ss = document.getElementById('simSlider');
     function updateSim() {
@@ -1639,23 +1487,17 @@
         document.getElementById('simCumul').textContent = d.cumul;
         const pct = (idx / (simData.length - 1)) * 100;
         ss.style.backgroundSize = pct + '% 100%';
-
-        // 구간별 표 행 강조
         for (let i = 0; i < simData.length; i++) {
             const row = document.getElementById('simRow' + i);
             if (!row) continue;
-            if (i === idx) {
-                row.classList.add('sim-active');
-                row.scrollIntoView && false; // 자동 스크롤 없음
-            } else {
-                row.classList.remove('sim-active');
-            }
+            if (i === idx) row.classList.add('sim-active');
+            else row.classList.remove('sim-active');
         }
     }
     ss.addEventListener('input', updateSim);
     updateSim();
 
-    // FAQ
+    // ── FAQ ──
     function toggleFaq(el) {
         const item = el.closest('.faq-item');
         const wasOpen = item.classList.contains('open');
@@ -1663,17 +1505,20 @@
         if (!wasOpen) item.classList.add('open');
     }
 
-    // FORM
+    // ── FORM SUBMIT ── (버그 수정: 올바른 input ID 참조)
     function submitForm() {
         const n = document.getElementById('fname').value.trim();
-        const p = document.getElementById('fphone').value.trim();
-        const d = document.getElementById('fdept').value;
-        const r = document.getElementById('frev').value;
-        if (!n || !p || !d || !r) { alert('모든 항목을 입력해 주세요.'); return; }
+        const p = document.getElementById('phone').value.trim();
+        const d = document.getElementById('dept').value;
+        const r = document.getElementById('revenue').value;
+        if (!n || !p || !d || !r) {
+            alert('성함, 연락처, 진료과목, 순수익 규모는 필수 입력 항목입니다.');
+            return;
+        }
         alert(`신청이 완료되었습니다, ${n} 원장님!\n영업일 기준 24시간 내 담당자가 연락드리겠습니다.\n\n☎ 1533-6441`);
     }
 
-    // REMAIN
+    // ── REMAIN COUNTER ──
     let remain = 3;
     setInterval(() => {
         if (Math.random() < 0.05 && remain > 1) {
@@ -1684,4 +1529,3 @@
 </script>
 </body>
 </html>
-
