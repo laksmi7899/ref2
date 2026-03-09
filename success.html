@@ -67,7 +67,7 @@
         }
         .success-hero p strong { color: var(--text-main); font-weight: 700; }
 
-        /* 진행 타임라인 */
+        /* 진행 타임라인 (3단계로 수정됨) */
         .timeline-wrap {
             padding: 40px 25px;
             background: var(--bg-light);
@@ -437,7 +437,6 @@
 
 <div class="container">
 
-    <!-- 성공 헤더 -->
     <div class="success-hero">
         <div class="check-circle">✅</div>
         <h1>신청이 완료되었습니다</h1>
@@ -445,43 +444,30 @@
         <strong>영업일 기준 24시간 이내</strong>에 담당 컨설턴트가 직접 연락드립니다.</p>
     </div>
 
-    <!-- 진행 타임라인 -->
     <div class="timeline-wrap">
         <div class="timeline-title">📋 신청 후 진행 프로세스</div>
         <div class="timeline">
             <div class="tl-item">
                 <div class="tl-dot active">✓</div>
                 <div class="tl-content">
-                    <h4>진단 접수 및 사전 분석 시작</h4>
-                    <p>원장님의 정보가 정상적으로 접수되었습니다.</p>
-                    <span class="tl-badge">완료</span>
+                    <h4>진단 접수 및 일정 조율</h4>
                 </div>
             </div>
             <div class="tl-item">
                 <div class="tl-dot pending">2</div>
                 <div class="tl-content">
-                    <h4>담당 컨설턴트 배정 및 일정 조율</h4>
-                    <p>카카오톡 또는 전화 중 편하신 방법으로 상담 일정을 잡아드립니다.</p>
+                    <h4>담당자 배정 및 일정 조율</h4>
                 </div>
             </div>
             <div class="tl-item">
                 <div class="tl-dot pending">3</div>
                 <div class="tl-content">
-                    <h4>핵심 리스크 도출 및 1차 브리핑 (유선/화상)</h4>
-                    <p>전문 컨설턴트가 1:1 맞춤형 브리핑을 진행합니다.</p>
-                </div>
-            </div>
-            <div class="tl-item">
-                <div class="tl-dot pending">4</div>
-                <div class="tl-content">
-                    <h4>맞춤 절세 시뮬레이션 보고서 전달</h4>
-                    <p>통상 300만 원 상당의 경영 진단 보고서를 무료 제공합니다.</p>
+                    <h4>핵심 리스크 도출 및 1차 브리핑(미팅)</h4>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 리포트 다운로드 -->
     <div class="download-section">
     <span class="section-label">FREE REPORT &amp; TOOL</span>
 
@@ -506,7 +492,6 @@
     <p class="dl-note">다운로드가 되지 않을 경우 아래 카카오 채널로 문의주세요.</p>
 </div>
 
-    <!-- 유튜브 채널 -->
     <div class="links-section bg-light">
         <span class="section-label">▶ Visual Insight — YouTube</span>
         <div class="link-grid">
@@ -531,7 +516,6 @@
         </div>
     </div>
 
-    <!-- 네이버 블로그 -->
     <div class="links-section bg-white">
         <span class="section-label">✏️ Deep Column — Naver Blog</span>
         <div class="link-grid">
@@ -548,7 +532,6 @@
         </div>
     </div>
 
-    <!-- 카카오 채널 -->
     <div class="links-section bg-light">
         <span class="section-label">💬 Direct Contact — Kakao</span>
         <a href="http://pf.kakao.com/_SxdxfxcG/chat" target="_blank" rel="noopener" class="kakao-card">
@@ -581,9 +564,6 @@
 
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     개인정보처리방침 모달
-═══════════════════════════════════════════════ -->
 <div class="privacy-overlay" id="privacyOverlay" onclick="handleOverlayClick(event)">
     <div class="privacy-modal" id="privacyModal">
         <div class="privacy-modal-header">
@@ -600,7 +580,6 @@
                 <p>USP COMPANY(이하 "회사")는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령을 준수하며, 이용자의 개인정보를 안전하게 처리하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.</p>
             </div>
 
-            <!-- 제1조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 01</div>
                 <h3>개인정보의 처리 목적</h3>
@@ -613,7 +592,6 @@
                 </table>
             </div>
 
-            <!-- 제2조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 02</div>
                 <h3>처리하는 개인정보 항목</h3>
@@ -626,7 +604,6 @@
                 </table>
             </div>
 
-            <!-- 제3조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 03</div>
                 <h3>개인정보의 처리 및 보유 기간</h3>
@@ -640,7 +617,6 @@
                 </table>
             </div>
 
-            <!-- 제4조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 04</div>
                 <h3>개인정보의 제3자 제공</h3>
@@ -653,7 +629,6 @@
                 </table>
             </div>
 
-            <!-- 제5조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 05</div>
                 <h3>정보주체의 권리·의무 및 행사 방법</h3>
@@ -662,7 +637,6 @@
                 <p>권리 행사는 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며, 회사는 이에 대해 지체 없이 조치하겠습니다.</p>
             </div>
 
-            <!-- 제6조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 06</div>
                 <h3>개인정보의 안전성 확보 조치</h3>
@@ -670,7 +644,6 @@
                 <p>① <strong>내부관리계획 수립·시행</strong> : 개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.<br>② <strong>접속기록의 보관 및 위변조 방지</strong> : 개인정보처리시스템에 접속한 기록을 최소 1년 이상 보관·관리하고 있습니다.<br>③ <strong>개인정보에 대한 접근 제한</strong> : 개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여·변경·말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있습니다.<br>④ <strong>비인가자에 대한 출입 통제</strong> : 개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립·운영하고 있습니다.</p>
             </div>
 
-            <!-- 제7조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 07</div>
                 <h3>개인정보 자동 수집 장치의 설치·운영 및 거부</h3>
@@ -678,7 +651,6 @@
                 <p>쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 이용자는 쿠키 설치에 대한 선택권을 가지고 있습니다. 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수 있습니다.</p>
             </div>
 
-            <!-- 제8조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 08</div>
                 <h3>개인정보 보호책임자</h3>
@@ -693,7 +665,6 @@
                 <p style="margin-top:14px;">정보주체께서는 회사의 서비스를 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만 처리, 피해 구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. 회사는 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.</p>
             </div>
 
-            <!-- 제9조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 09</div>
                 <h3>개인정보 처리방침 변경</h3>
@@ -701,7 +672,6 @@
                 <p>② 이전의 개인정보처리방침은 아래에서 확인하실 수 있습니다. 본 처리방침에 변경이 있는 경우, 변경 사항을 웹사이트 공지사항을 통하여 공지합니다.</p>
             </div>
 
-            <!-- 제10조 -->
             <div class="privacy-section">
                 <div class="privacy-section-num">ARTICLE 10</div>
                 <h3>권익침해 구제 방법</h3>
@@ -752,8 +722,3 @@
 
 </body>
 </html>
-
-
-
-
-
