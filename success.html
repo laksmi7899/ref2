@@ -33,8 +33,6 @@
             box-shadow: 0 0 80px rgba(0,0,0,0.06);
             overflow: hidden;
         }
-
-        /* ——— 상단 성공 헤더 ——— */
         .success-hero {
             padding: 70px 30px 55px;
             text-align: center;
@@ -66,8 +64,6 @@
             line-height: 1.7; word-break: keep-all;
         }
         .success-hero p strong { color: var(--text-main); font-weight: 700; }
-
-        /* 진행 타임라인 (3단계로 수정됨) */
         .timeline-wrap {
             padding: 40px 25px;
             background: var(--bg-light);
@@ -123,8 +119,6 @@
             font-size: 12px; font-weight: 700;
             color: var(--accent-gold);
         }
-
-        /* ——— 리포트 다운로드 ——— */
         .download-section {
             padding: 40px 25px;
             background: var(--bg-white);
@@ -174,17 +168,13 @@
             font-size: 12px; color: var(--text-sub);
             text-align: center; margin-top: 14px; line-height: 1.6;
         }
-
-        /* ——— 링크 섹션 공통 ——— */
         .links-section {
             padding: 35px 25px;
             border-top: 1px solid var(--border);
         }
         .links-section.bg-light { background: var(--bg-light); }
         .links-section.bg-white { background: var(--bg-white); }
-
         .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
         .link-card {
             background: var(--bg-white);
             border: 1px solid var(--border);
@@ -210,8 +200,6 @@
         .link-card .lc-sub {
             font-size: 11px; color: var(--text-sub);
         }
-
-        /* 카카오 카드 */
         .kakao-card {
             background: var(--kakao-yellow);
             border: none;
@@ -238,7 +226,6 @@
         .kakao-card .kc-arrow {
             font-size: 18px; color: rgba(60,30,30,0.4); flex-shrink: 0;
         }
-
         footer {
             padding: 40px 20px 30px;
             text-align: center;
@@ -249,10 +236,6 @@
         }
         footer a { color: #999; text-decoration: none; }
         footer a:hover { color: var(--accent-gold); }
-
-        /* ═══════════════════════════════════════
-           개인정보처리방침 모달
-        ═══════════════════════════════════════ */
         .privacy-overlay {
             position: fixed;
             inset: 0;
@@ -469,7 +452,7 @@
     </div>
 
     <div class="download-section">
-    <span class="section-label">FREE REPORT &amp; TOOL</span>
+    <span class="section-label">FREE REPORT</span>
 
     <a href="USP_Salary_Guide.pdf" class="dl-card" target="_blank">
         <div class="dl-icon" style="background:#ff3b30;">📄</div>
@@ -478,15 +461,6 @@
             <small>클릭 시 PDF가 새 창에서 열립니다</small>
         </div>
         <div class="dl-arrow">→</div>
-    </a>
-
-    <a href="USP_Salary_Guide.xlsx" class="dl-card" download>
-        <div class="dl-icon" style="background:#34c759;">📊</div>
-        <div class="dl-text">
-            <span>페이닥터 급여구조 최적화 가이드</span>
-            <small>파일을 다운로드하여 직접 입력해 보세요</small>
-        </div>
-        <div class="dl-arrow">↓</div>
     </a>
 
     <p class="dl-note">다운로드가 되지 않을 경우 아래 카카오 채널로 문의주세요.</p>
@@ -689,9 +663,6 @@
 </div>
 
 <script>
-    /* ═══════════════════════════════════════
-       개인정보처리방침 모달 제어
-    ═══════════════════════════════════════ */
     function openPrivacyModal(e) {
         if (e) e.preventDefault();
         var overlay = document.getElementById('privacyOverlay');
@@ -712,7 +683,6 @@
         }
     }
 
-    /* ESC 키로 모달 닫기 */
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closePrivacyModal();
